@@ -8671,7 +8671,7 @@ p {
     overflow: hidden;
 }
 
-.header_btn {
+button.header_btn {
     font-size: 1.2rem;
     outline: rgb(130, 130, 130);
     color: #fff;
@@ -8681,6 +8681,8 @@ p {
     /* background-image: url(../assets2/images/logo/uzor.png); */
     /* background-size: 52px 50px; */
     background-color: rgba(0, 159, 14, 0.4) !important;
+    position: relative;
+    z-index: 12 !important;
 }
 
 button.header_btn:hover {
@@ -8837,6 +8839,20 @@ button.header_btn:hover {
     height: 100vh;
 }
 
+.btns_prev_next_block {
+    /* background-color: black; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.btns_prev_next_block .container {
+    position: relative;
+    /* border: 1px solid red; */
+    height: 100vh;
+}
 
 
 .btns_prev_next {
@@ -8845,9 +8861,15 @@ button.header_btn:hover {
     height: 100px;
     /* overflow: hidden; */
     position: absolute;
-    z-index: 1000;
     top: 70%;
-    right: 250px;
+    right: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .btns_prev_next {
+        top: 80%;
+        right: 10%;
+    }
 }
 
 .carousel-control-prev,
@@ -8860,6 +8882,7 @@ button.header_btn:hover {
     font-size: 1rem;
     background-color: rgba(44, 53, 65, 1);
     opacity: 1;
+
 }
 
 .carousel-control-prev:hover,
@@ -8910,10 +8933,6 @@ button.header_btn:hover {
 
     .carousel_info p {
         font-size: 1.2rem;
-    }
-
-    .btns_prev_next {
-        right: 150px;
     }
 }
 
@@ -9337,8 +9356,10 @@ button.header_btn:hover {
 
 
 .consulting_btn:active {
-    color: #fff;
-    outline: 1px solid var(--main-text-color) !important;
+    color: #fff !important;
+    font-weight: 600;
+    background-color: #a89c4d !important;
+    border: 1px solid var(--main-text-color) !important;
 }
 
 .consulting_form_text {
@@ -9363,14 +9384,21 @@ button.header_btn:hover {
 
 .form-check-input {
     margin-right: 6px;
+    cursor: pointer;
 }
 
 .form-check-input:checked {
     /* background-color: red; */
     /* border-color: red; */
-    background-color: var(--main-bg-color);
+    /* background-color: var(--main-bg-color); */
     /* border: var(--main-bg-color); */
+    background-color: var(--main-text-color);
     box-shadow: none;
+    border: 1px solid var(--main-text-color);
+}
+
+.form-check-input:focus {
+    border: 1px solid var(--main-text-color);
 }
 
 /* specialists */
@@ -9782,6 +9810,7 @@ button.header_btn:hover {
 .desktop {
     display: block;
 }
+
 
 @media screen and (max-width: 1200px) {
     .desktop {
