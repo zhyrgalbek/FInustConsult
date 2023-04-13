@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "gh-pages": "^5.0.0",
+    "hamburgers": "^1.2.1",
+    "jquery": "^3.6.4",
+    "owl-carousel": "^1.0.0",
+    "slick-carousel": "^1.8.1"
+  },
+  "devDependencies": {
+    "html-importer": "^0.1.3"
+  }
+}
