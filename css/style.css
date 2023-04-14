@@ -8991,7 +8991,7 @@ button.header_btn:hover {
 .services_block_text {
     /* border: 1px solid red; */
     position: absolute;
-    width: 80%;
+    width: 85%;
     left: 50%;
     bottom: 100%;
     transform: translateX(-50%) translateY(50%);
@@ -9006,6 +9006,7 @@ button.header_btn:hover {
     border-radius: 12px;
     padding: 20px;
     min-height: 200px;
+    overflow: hidden;
 }
 
 .services_block_text h3 {
