@@ -9286,10 +9286,12 @@ button.header_btn:hover {
 .about_info_btn a {
     text-decoration: none;
     color: var(--main-bg-color);
+    border: 1px solid var(--main-bg-color);
 }
 
 .about_info_btn:hover a {
     color: #fff;
+    background-color: var(--main-bg-color);
 }
 
 /* consulting */
@@ -9970,6 +9972,7 @@ ul.dropdown_menu li a.dropdown_item:hover {
 .reviews li::after {}
 
 .menu_accordion {
+
     width: 100%;
     border: none;
     overflow: auto;

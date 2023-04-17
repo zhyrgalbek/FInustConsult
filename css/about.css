@@ -30,7 +30,9 @@
 
 .about {
     background-color: #F4F7F9;
-    padding-top: 0;
+    padding: 0px;
+    padding: 50px 0;
+    padding: 20px 0;
 }
 
 .about_main {

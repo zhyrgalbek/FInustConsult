@@ -1,0 +1,19 @@
+.about {}
+
+.about_main {
+    background-color: #F4F7F9;
+}
+
+.blog_item {
+    /* border: 1px solid red; */
+    padding: 40px;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-bottom: 40px;
+}
+
+.blog_item_header {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
