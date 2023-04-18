@@ -41,9 +41,9 @@
     border-radius: 8px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
     .about_main {
-        padding: 20px 10px;
+        padding: 20px 20px;
     }
 }
 
@@ -62,7 +62,7 @@
     color: var(--main-bg-color);
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
     .about_header {
         font-size: 1.7rem;
     }
@@ -132,4 +132,99 @@ table th {
 .about_foto {
     background-color: #F4F7F9;
     padding: 20px 0;
+}
+
+.share {
+    /* border: 1px solid red; */
+    margin-top: 30px;
+}
+
+.share h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--main-bg-color);
+}
+
+.share_icons {
+    font-size: 2rem;
+    color: #fff;
+}
+
+.share_icons_block {
+    width: 64px;
+    height: 64px;
+}
+
+.share_icons_block img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.share_telegram {
+    font-size: 3rem;
+}
+
+.share_whatsapp {
+    background-color: #0EC143;
+    padding: 9px;
+    padding-bottom: 2px;
+    border-radius: 30%;
+}
+
+.share_telegram {
+    font-size: 3.4rem;
+}
+
+.share_block {
+    margin-right: 15px;
+}
+
+.share_facebook {
+    background-color: #1A78F2;
+    display: inline-block;
+    padding: 5px;
+    padding-top: 8px;
+    padding-bottom: 0;
+    border-radius: 20%;
+}
+
+@media screen and (max-width: 768px) {
+    .blog_text {
+        font-size: 0.9rem !important;
+        line-height: 1.6rem;
+    }
+}
+
+a.about_info,
+a.about_info:hover {
+    background-color: var(--main-bg-color);
+    background-color: #fff;
+    color: #fff;
+    color: var(--main-bg-color);
+    border: 1px solid var(--main-bg-color);
+    font-weight: 500;
+    padding: 16px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+a.about_info:active {
+    background-color: var(--main-bg-color) !important;
+    color: #fff !important;
+}
+
+a.about_info:hover {
+    background-color: var(--main-bg-color);
+    color: #fff;
+    font-weight: 500;
+    padding: 16px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+a.about_info:active {
+    background-color: var(--main-bg-color) !important;
+    color: #fff !important;
 }
