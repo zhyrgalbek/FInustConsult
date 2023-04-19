@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" />
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/chatbot.css">
 </head>
 
 <body>
@@ -35,7 +36,7 @@
                         <div class="menuoffCanvas">
                             <ul class="ul">
                                 <li><a href="/FInustConsult/">Главная</a></li>
-                                <li><a href="/FInustConsult/about.html">Компании</a></li>
+                                <li><a href="/FInustConsult/about.html">О компании</a></li>
                                 <li>
                                     <div class="accordion menu_accordion" id="accordionExample">
                                         <div class="accordion-item">
@@ -231,7 +232,7 @@
                 <div class="row gx-5">
                     <div class="col-lg-4 col-md-6">
                         <div class="services_block">
-                            <a href="FInustConsult/legalServices.html">
+                            <a href="/FInustConsult/legalServices.html">
                                 <div class="services_img">
                                     <div class="service_shadow"></div>
                                     <img src="./assets2/images/services5.webp" alt="">
@@ -752,7 +753,7 @@
                                         Стаж работы - 21 год <br>
                                         Из них: <br>
                                     <ul class="reviews">
-                                        <li>
+                                        <!-- <li>
                                             Государственная служба - 6 лет
                                         </li>
                                         <li>
@@ -763,28 +764,31 @@
                                         </li>
                                         <li>
                                             Корпорации МСП
-                                        </li>
-                                        <!-- <li>Директора М.Б.Е. Групп</li>
+                                        </li> -->
+                                        <li>Директора по развитию бизнеса М.Б.Е. Групп</li>
                                         <li>Исполнительного директора Ассоциации иностранных инвесторов;
                                         </li>
                                         <li>Директора Global Technology Solutions.
                                         </li>
-                                        <li>Международного эксперта по обучению предпринимательству на основе
-                                            компетенций международной консалтинговой компании Inno-Change в Филиппинах;
-                                        </li>
                                         <li>Директора Центра бизнес-инноваций PEAK Bishkek в рамках проекта EIP при
-                                            поддержке Правительства Великобритании.
-                                        </li>
-                                        <li>Руководителя Секретариата Национального Альянса Бизнес Ассоциаций.
-                                        </li>
-                                        <li>Председателя комитета по защите иностранного бизнеса при
-                                            Торгово-промышленной палате Кыргызской Республики;
-                                        </li>
+                                            поддержке Правительства Великобритании.</li>
+                                        <li>Руководителя Секретариата Национального Альянса Бизнес Ассоциаций.</li>
                                         <li>Члена Совета по развитию бизнеса при Торага Жогорку Кенеша Кыргызской
                                             Республики.
-                                        </li> -->
+                                        </li>
                                     </ul>
-
+                                    Основатель:
+                                    <ul class="reviews">
+                                        <li>Ассоциации маркетологов и движения “Реформа”;</li>
+                                        <li>Союза пользователей электротранспорта ЭлТранс;
+                                        </li>
+                                        <li>Общественного фонда PEAK;
+                                        </li>
+                                        <li>Степень МВА в Институте Международной Экономики и Бизнеса РУДН, Москва.
+                                        </li>
+                                        <li>Степень магистра по специальности «Политология», БГУ
+                                        </li>
+                                    </ul>
                                     Автор многих книг и исследований о стратегическом планировании и экономике
                                     </p>
                                 </div>
@@ -1141,6 +1145,7 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
+                <!-- <h2 class="Thankyou">Мы вам перезвоним!</h2> -->
                 <div class="modal-header">
                     <h2 id="exampleModalLabel">Оставить Заявку</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -1159,9 +1164,9 @@
                             <label for="exampleFormControlTextarea1">Пожелания</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </p>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
+                        <div class="form-check1">
+                            <label class="form-check-label" for="flexCheckDefault1">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
                                 Я согласен на обработку персональных данных
                             </label>
                         </div>
@@ -1173,6 +1178,8 @@
             </div>
         </div>
     </div>
+
+    <div id="chatbot"></div>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"
         integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
@@ -1190,6 +1197,10 @@
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script src="./script.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="./chatbot.js" type="text/javascript"></script>
 </body>
 
 </html>

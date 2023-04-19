@@ -46,7 +46,7 @@ console.log(menu_item)
 
 for (let i = 0; i < menu_item.length - 1; i++) {
     menu_item[i].addEventListener('click', function (e) {
-        e.preventDefault();
+        // e.preventDefault();
         hamburger.classList.remove('is-active');
         setTimeout(() => {
             if (i === 0 || i === 3) {
