@@ -43,13 +43,45 @@ const chatbotText = [
     ]
 ]
 
-let data;
-fetch('./chatbot.json').then(response => {
-    return response.json()
-}).then(json => {
-    data = json;
-})
+// let data;
+// fetch('./chatbot.json').then(response => {
+//     return response.json()
+// }).then(json => {
+//     data = json;
+// });
 
+let chatbot_questions = document.querySelector('#chatbot_questions');
+
+let questions;
+let category;
+
+for (let i = 0; i < chatbot_questions.children.length; i++) {
+    if (chatbot_questions.children[i].dataset.name == 'questions') {
+        questions = chatbot_questions.children[i];
+    }
+    if (chatbot_questions.children[i].dataset.name == 'category') {
+        category = chatbot_questions.children[i];
+    }
+}
+let m = [];
+for (let i = 0; i < questions.children.length; i++) {
+    console.log(questions.children[i])
+    let obj = {};
+    for (let j = 0; j < questions.children[i].children.length; j++) {
+        obj[questions.children[i].children[j].dataset.name] = questions.children[i].children[j].innerText;
+    }
+    m[i] = obj;
+}
+let data = [[...m]];
+let cat = [];
+
+for (let i = 0; i < category.children.length; i++) {
+    cat[i] = {
+        id: category.children[i].dataset.id,
+        vopros: category.children[i].innerText
+    }
+}
+cat = [[...cat]]
 
 
 const ChatBotButton = () => {
@@ -90,11 +122,52 @@ const ChatList = ({ data, onClick }) => {
         <ul className="chatListBlock">
             {
                 data[0].map(elem => {
-                    return <li className="chatListItem" onClick={() => { onClick(elem.text) }}>{elem.vopros}</li>
+                    return <li className="chatListItem" onClick={() => { onClick(elem) }}>{elem.vopros}</li>
                 })
             }
         </ul>
     </React.Fragment>
+}
+
+let words = [
+    [
+        'првет',
+        'привет',
+        'ghbdtn',
+        'здравствуй'
+    ],
+    [
+        'Привет',
+        'Здравствуйте',
+        'Добрый день',
+        'Рад тебя видеть!'
+    ],
+    [
+        'Пока',
+        'До свидания',
+        'пока'
+    ],
+    [
+        'Пока',
+        'До свидания',
+        'Приходи еше',
+        'Я буду скучать!'
+    ],
+]
+
+function answering(words, elem) {
+    for (let i = 0; i < words[0].length; i++) {
+        if (elem.text.trim() == words[0][i] && elem.variant === 'client') {
+            let s = Math.floor(Math.random() * words[1].length)
+            console.log(s);
+            return words[1][s];
+        }
+        if (elem.text.trim() == words[2][i] && elem.variant === 'client') {
+            let s = Math.floor(Math.random() * words[3].length)
+            console.log(s);
+            return words[3][s];
+        }
+    }
 }
 
 function proverka(text, prev) {
@@ -117,38 +190,78 @@ function proverka(text, prev) {
     return false;
 }
 
+function filterLayer(arr, data) {
+    let word = arr[arr.length - 1].text;
+    let f = data.flat(1)
+    let newData = f.filter(elem => {
+        if (elem.vopros.toLowerCase().trim().replace(/[^a-zа-яё0-9\s]/gi, "").indexOf(word.toLowerCase().trim().replace(/[^a-zа-яё0-9\s]/gi, "")) !== -1) {
+            return elem;
+        }
+    })
+    return [[...newData]];
+}
+
+function getQuestions(arr, elem) {
+    let k = arr.flat(1);
+    let p = k.filter(el => {
+        return +el.parent_id === +elem.id
+    })
+    return [[...p]]
+}
+
 const ChatBot = ({ handleClose }) => {
     const [input, setInput] = React.useState('');
-    const [messages, setMessages] = React.useState([]);
     const [btn, setBtn] = React.useState(false);
+    const [messages, setMessages] = React.useState([]);
+    const [questions, setQuoestions] = React.useState();
     const windowref = React.useRef();
-    const onClickItem = (text) => {
+
+    const onClickItem = (elem) => {
         setMessages((prev) => {
             let arr = prev.filter(elem => elem.variant !== 'vopros');
-            arr = [...arr, { id: Date.now(), text: <div className="loader"></div>, variant: 'loader' }];
+            let date = new Date();
+            arr = [...arr, { id: Date.now(), text: elem.vopros, variant: 'client', time: `${date.getHours()}:${date.getMinutes()}` }]
             return arr;
         })
         setTimeout(() => {
             setMessages((prev) => {
-                let arr = prev.filter(elem => elem.variant !== 'loader');
-                let date = new Date();
-                arr = [...arr, { id: Date.now(), text: text, variant: 'admin', time: `${date.getHours()}:${date.getMinutes()}` }]
+                let arr = prev.filter(elem => elem.variant !== 'vopros');
+                arr = [...arr, { id: Date.now(), text: <div className="loader"></div>, variant: 'loader' }];
                 return arr;
             })
-            setTimeout(() => {
-                setMessages((prev) => {
-                    return [...prev, { id: Date.now(), text: <div className="loader"></div>, variant: 'loader' }]
-                });
-                setTimeout(() => {
-                    setMessages((prev) => {
-                        let arr = prev.filter(elem => elem.variant !== 'loader');
-                        let date = new Date();
-                        arr = [...arr, { id: Date.now(), text: chatbotText[0][1].text, variant: 'voprosbot', time: `${date.getHours()}:${date.getMinutes()}` }]
-                        return arr;
-                    });
-                }, 3000)
-            }, 3000)
         }, 1000)
+        setTimeout(() => {
+            setMessages((prev) => {
+                let arr = prev.filter(elem => elem.variant !== 'loader');
+                let date = new Date();
+                arr = [...arr, { id: Date.now(), text: elem.text, variant: 'admin', time: `${date.getHours()}:${date.getMinutes()}` }]
+                return arr;
+            })
+        }, 2000)
+    }
+    const onClicktwoItem = (elem) => {
+        setMessages((prev) => {
+            let arr = prev.filter(elem => elem.variant !== 'vopros');
+            let date = new Date();
+            arr = [...arr, { id: Date.now(), text: elem.vopros, variant: 'client', time: `${date.getHours()}:${date.getMinutes()}` }]
+            return arr;
+        })
+        setTimeout(() => {
+            setMessages((prev) => {
+                let arr = prev.filter(elem => elem.variant !== 'vopros');
+                arr = [...arr, { id: Date.now(), text: <div className="loader"></div>, variant: 'loader' }];
+                return arr;
+            })
+        }, 1000)
+        setTimeout(() => {
+            setMessages((prev) => {
+                let arr = prev.filter(elem => elem.variant !== 'loader');
+                let date = new Date();
+                let newData = getQuestions(data, elem);
+                arr = [...arr, { id: Date.now(), text: <ChatList data={newData} onClick={onClickItem} />, variant: 'admin', time: `${date.getHours()}:${date.getMinutes()}` }]
+                return arr;
+            })
+        }, 2000)
     }
     const handleChange = (e) => {
         setInput(e.target.value);
@@ -186,14 +299,18 @@ const ChatBot = ({ handleClose }) => {
                 setMessages((prev) => {
                     let arr = prev.filter(elem => elem.variant !== 'loader');
                     let date = new Date();
-                    arr = [...arr, { id: Date.now(), text: <ChatList data={data} onClick={onClickItem} />, variant: 'vopros', time: `${date.getHours()}:${date.getMinutes()}` }]
+                    let otvet = answering(words, arr[arr.length - 1])
+                    if (otvet) {
+                        return [...arr, { id: Date.now(), text: otvet, variant: 'admin', time: `${date.getHours()}:${date.getMinutes()}` }]
+                    }
+                    arr = [...arr, { id: Date.now(), text: <ChatList data={cat} onClick={onClicktwoItem} />, variant: 'admin', time: `${date.getHours()}:${date.getMinutes()}` }]
                     return arr;
                 });
             }, 1000);
             setMessages((prev) => {
-                let loader = prev.find(elem => elem.variant === 'loader')
+                let loader = prev.find(elem => elem.variant === 'loader');
                 if (!loader) {
-                    return [...prev, { id: Date.now(), text: <div className="loader"></div>, variant: 'loader' }]
+                    return [...prev, { id: Date.now(), text: <div className="loader"></div>, variant: 'loader' }];
                 }
                 return prev;
             });

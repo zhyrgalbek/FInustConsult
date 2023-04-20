@@ -30,12 +30,45 @@ var chatbotText = [[{
     text: 'Элементтерди тандаңыз'
 }]];
 
-var data = void 0;
-fetch('./chatbot.json').then(function (response) {
-    return response.json();
-}).then(function (json) {
-    data = json;
-});
+// let data;
+// fetch('./chatbot.json').then(response => {
+//     return response.json()
+// }).then(json => {
+//     data = json;
+// });
+
+var chatbot_questions = document.querySelector('#chatbot_questions');
+
+var questions = void 0;
+var category = void 0;
+
+for (var i = 0; i < chatbot_questions.children.length; i++) {
+    if (chatbot_questions.children[i].dataset.name == 'questions') {
+        questions = chatbot_questions.children[i];
+    }
+    if (chatbot_questions.children[i].dataset.name == 'category') {
+        category = chatbot_questions.children[i];
+    }
+}
+var m = [];
+for (var _i = 0; _i < questions.children.length; _i++) {
+    console.log(questions.children[_i]);
+    var obj = {};
+    for (var j = 0; j < questions.children[_i].children.length; j++) {
+        obj[questions.children[_i].children[j].dataset.name] = questions.children[_i].children[j].innerText;
+    }
+    m[_i] = obj;
+}
+var data = [[].concat(m)];
+var cat = [];
+
+for (var _i2 = 0; _i2 < category.children.length; _i2++) {
+    cat[_i2] = {
+        id: category.children[_i2].dataset.id,
+        vopros: category.children[_i2].innerText
+    };
+}
+cat = [[].concat(_toConsumableArray(cat))];
 
 var ChatBotButton = function ChatBotButton() {
     var _React$useState = React.useState(false),
@@ -94,7 +127,7 @@ var ChatList = function ChatList(_ref) {
                 return React.createElement(
                     'li',
                     { className: 'chatListItem', onClick: function onClick() {
-                            _onClick(elem.text);
+                            _onClick(elem);
                         } },
                     elem.vopros
                 );
@@ -102,6 +135,23 @@ var ChatList = function ChatList(_ref) {
         )
     );
 };
+
+var words = [['првет', 'привет', 'ghbdtn', 'здравствуй'], ['Привет', 'Здравствуйте', 'Добрый день', 'Рад тебя видеть!'], ['Пока', 'До свидания', 'пока'], ['Пока', 'До свидания', 'Приходи еше', 'Я буду скучать!']];
+
+function answering(words, elem) {
+    for (var _i3 = 0; _i3 < words[0].length; _i3++) {
+        if (elem.text.trim() == words[0][_i3] && elem.variant === 'client') {
+            var s = Math.floor(Math.random() * words[1].length);
+            console.log(s);
+            return words[1][s];
+        }
+        if (elem.text.trim() == words[2][_i3] && elem.variant === 'client') {
+            var _s = Math.floor(Math.random() * words[3].length);
+            console.log(_s);
+            return words[3][_s];
+        }
+    }
+}
 
 function proverka(text, prev) {
     if (prev && text) {
@@ -118,6 +168,25 @@ function proverka(text, prev) {
     return false;
 }
 
+function filterLayer(arr, data) {
+    var word = arr[arr.length - 1].text;
+    var f = data.flat(1);
+    var newData = f.filter(function (elem) {
+        if (elem.vopros.toLowerCase().trim().replace(/[^a-zа-яё0-9\s]/gi, "").indexOf(word.toLowerCase().trim().replace(/[^a-zа-яё0-9\s]/gi, "")) !== -1) {
+            return elem;
+        }
+    });
+    return [[].concat(_toConsumableArray(newData))];
+}
+
+function getQuestions(arr, elem) {
+    var k = arr.flat(1);
+    var p = k.filter(function (el) {
+        return +el.parent_id === +elem.id;
+    });
+    return [[].concat(_toConsumableArray(p))];
+}
+
 var ChatBot = function ChatBot(_ref2) {
     var handleClose = _ref2.handleClose;
 
@@ -126,50 +195,81 @@ var ChatBot = function ChatBot(_ref2) {
         input = _React$useState6[0],
         setInput = _React$useState6[1];
 
-    var _React$useState7 = React.useState([]),
+    var _React$useState7 = React.useState(false),
         _React$useState8 = _slicedToArray(_React$useState7, 2),
-        messages = _React$useState8[0],
-        setMessages = _React$useState8[1];
+        btn = _React$useState8[0],
+        setBtn = _React$useState8[1];
 
-    var _React$useState9 = React.useState(false),
+    var _React$useState9 = React.useState([]),
         _React$useState10 = _slicedToArray(_React$useState9, 2),
-        btn = _React$useState10[0],
-        setBtn = _React$useState10[1];
+        messages = _React$useState10[0],
+        setMessages = _React$useState10[1];
+
+    var _React$useState11 = React.useState(),
+        _React$useState12 = _slicedToArray(_React$useState11, 2),
+        questions = _React$useState12[0],
+        setQuoestions = _React$useState12[1];
 
     var windowref = React.useRef();
-    var onClickItem = function onClickItem(text) {
+
+    var onClickItem = function onClickItem(elem) {
         setMessages(function (prev) {
             var arr = prev.filter(function (elem) {
                 return elem.variant !== 'vopros';
             });
-            arr = [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: React.createElement('div', { className: 'loader' }), variant: 'loader' }]);
+            var date = new Date();
+            arr = [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: elem.vopros, variant: 'client', time: date.getHours() + ':' + date.getMinutes() }]);
             return arr;
         });
+        setTimeout(function () {
+            setMessages(function (prev) {
+                var arr = prev.filter(function (elem) {
+                    return elem.variant !== 'vopros';
+                });
+                arr = [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: React.createElement('div', { className: 'loader' }), variant: 'loader' }]);
+                return arr;
+            });
+        }, 1000);
         setTimeout(function () {
             setMessages(function (prev) {
                 var arr = prev.filter(function (elem) {
                     return elem.variant !== 'loader';
                 });
                 var date = new Date();
-                arr = [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: text, variant: 'admin', time: date.getHours() + ':' + date.getMinutes() }]);
+                arr = [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: elem.text, variant: 'admin', time: date.getHours() + ':' + date.getMinutes() }]);
                 return arr;
             });
-            setTimeout(function () {
-                setMessages(function (prev) {
-                    return [].concat(_toConsumableArray(prev), [{ id: Date.now(), text: React.createElement('div', { className: 'loader' }), variant: 'loader' }]);
+        }, 2000);
+    };
+    var onClicktwoItem = function onClicktwoItem(elem) {
+        setMessages(function (prev) {
+            var arr = prev.filter(function (elem) {
+                return elem.variant !== 'vopros';
+            });
+            var date = new Date();
+            arr = [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: elem.vopros, variant: 'client', time: date.getHours() + ':' + date.getMinutes() }]);
+            return arr;
+        });
+        setTimeout(function () {
+            setMessages(function (prev) {
+                var arr = prev.filter(function (elem) {
+                    return elem.variant !== 'vopros';
                 });
-                setTimeout(function () {
-                    setMessages(function (prev) {
-                        var arr = prev.filter(function (elem) {
-                            return elem.variant !== 'loader';
-                        });
-                        var date = new Date();
-                        arr = [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: chatbotText[0][1].text, variant: 'voprosbot', time: date.getHours() + ':' + date.getMinutes() }]);
-                        return arr;
-                    });
-                }, 3000);
-            }, 3000);
+                arr = [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: React.createElement('div', { className: 'loader' }), variant: 'loader' }]);
+                return arr;
+            });
         }, 1000);
+        setTimeout(function () {
+            setMessages(function (prev) {
+                var arr = prev.filter(function (elem) {
+                    return elem.variant !== 'loader';
+                });
+                var date = new Date();
+                var newData = getQuestions(data, elem);
+                arr = [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: React.createElement(ChatList, { data: newData, onClick: onClickItem }), variant: 'admin', time: date.getHours() + ':' + date.getMinutes() }]);
+                return arr;
+            });
+        }, 2000);
     };
     var handleChange = function handleChange(e) {
         setInput(e.target.value);
@@ -215,7 +315,11 @@ var ChatBot = function ChatBot(_ref2) {
                         return elem.variant !== 'loader';
                     });
                     var date = new Date();
-                    arr = [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: React.createElement(ChatList, { data: data, onClick: onClickItem }), variant: 'vopros', time: date.getHours() + ':' + date.getMinutes() }]);
+                    var otvet = answering(words, arr[arr.length - 1]);
+                    if (otvet) {
+                        return [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: otvet, variant: 'admin', time: date.getHours() + ':' + date.getMinutes() }]);
+                    }
+                    arr = [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: React.createElement(ChatList, { data: cat, onClick: onClicktwoItem }), variant: 'admin', time: date.getHours() + ':' + date.getMinutes() }]);
                     return arr;
                 });
             }, 1000);

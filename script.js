@@ -42,7 +42,7 @@ let trust = document.getElementById('trust');
 let contacts = document.getElementById('contacts');
 
 
-console.log(menu_item)
+// console.log(menu_item)
 
 for (let i = 0; i < menu_item.length - 1; i++) {
     menu_item[i].addEventListener('click', function (e) {

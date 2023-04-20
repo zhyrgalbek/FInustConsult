@@ -10056,8 +10056,12 @@ ul.dropdown_menu li a.dropdown_item:hover {
     /* transform: translate(-50%, -50%); */
     width: auto;
     height: auto;
-    right: 40px;
-    bottom: 40px;
+    right: 0px;
+    bottom: 0px;
     z-index: 1000;
     /* background-color: #fff; */
+}
+
+#chatbot_questions {
+    display: none;
 }
