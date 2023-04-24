@@ -7,12 +7,12 @@ $(function () {
     $('.single-item').slick({
         infinite: true,
         dots: true,
-        slidesToShow: 2,
+        slidesToShow: 3,
         slidesToScroll: 1,
         nav: true,
         responsive: [
             {
-                breakpoint: 992,
+                breakpoint: 768,
                 settings: {
                     slidesToShow: 1,
                 }
@@ -20,7 +20,7 @@ $(function () {
             {
                 breakpoint: 1200,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 2,
                 }
             }
         ]
@@ -74,7 +74,7 @@ DG.then(function () {
         zoom: 13
     });
 
-    DG.marker([42.884147, 74.589958]).addTo(map).bindPopup('Вы кликнули по мне!');
+    DG.marker([42.88401467044253, 74.58993673324586]).addTo(map).bindPopup('Вы кликнули по мне!');
 });
 var map2;
 DG.then(function () {
@@ -88,6 +88,35 @@ DG.then(function () {
 
 const myModal = document.getElementById('myModal')
 const myInput = document.getElementById('myInput')
+
+
+
+///validation Form
+
+let name = document.getElementById('name');
+let tel = document.getElementById('tel');
+let form = document.getElementById('form');
+let checkbox = document.getElementById('flexCheckDefault1');
+
+form.addEventListener('submit', function (e) {
+    if (!name.value.trim() || !tel.value.trim() || !checkbox.checked) {
+        form.classList.add('was-validated');
+        e.preventDefault();
+    }
+})
+
+let rubrika = document.querySelector('.category');
+
+window.addEventListener('click', function (e) {
+    console.log(e.target)
+    // rubrika.nextElementSibling.classList.remove('show');
+})
+
+rubrika.addEventListener('click', function () {
+    console.log(this.nextElementSibling)
+    this.children[2].classList.toggle('show');
+
+})
 
 // myModal.addEventListener('shown.bs.modal', () => {
 //     myInput.focus()
