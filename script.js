@@ -7,7 +7,7 @@ $(function () {
     $('.single-item').slick({
         infinite: true,
         dots: true,
-        slidesToShow: 3,
+        slidesToShow: 2,
         slidesToScroll: 1,
         nav: true,
         responsive: [
@@ -17,11 +17,10 @@ $(function () {
                     slidesToShow: 1,
                 }
             },
-
             {
                 breakpoint: 1200,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 3,
                 }
             }
         ]

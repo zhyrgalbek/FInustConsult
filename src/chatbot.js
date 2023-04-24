@@ -134,7 +134,9 @@ let words = [
         'првет',
         'привет',
         'ghbdtn',
-        'здравствуй'
+        'здравствуй',
+        'Привет',
+        'Ghbdtn'
     ],
     [
         'Привет',
@@ -204,7 +206,7 @@ function filterLayer(arr, data) {
 function getQuestions(arr, elem) {
     let k = arr.flat(1);
     let p = k.filter(el => {
-        return +el.parent_id === +elem.id
+        return +el.parent_id === +elem.id;
     })
     return [[...p]]
 }
