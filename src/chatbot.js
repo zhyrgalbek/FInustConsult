@@ -100,13 +100,13 @@ const ChatBotButton = () => {
             <svg width="32" height="33" viewBox="0 0 36 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M12.75 29H12C6 29 3 27.5 3 20V12.5C3 6.5 6 3.5 12 3.5H24C30 3.5 33 6.5 33 12.5V20C33 26 30 29 24 29H23.25C22.785 29 22.335 29.225 22.05 29.6L19.8 32.6C18.81 33.92 17.19 33.92 16.2 32.6L13.95 29.6C13.71 29.27 13.155 29 12.75 29Z"
-                    stroke="#6A8AFF" stroke-width="2.25" stroke-miterlimit="10" stroke-linecap="round"
+                    stroke="#277E37" stroke-width="2.25" stroke-miterlimit="10" stroke-linecap="round"
                     stroke-linejoin="round" />
-                <path d="M23.9947 17H24.0082" stroke="#6A8AFF" stroke-width="3" stroke-linecap="round"
+                <path d="M23.9947 17H24.0082" stroke="#277E37" stroke-width="3" stroke-linecap="round"
                     stroke-linejoin="round" />
-                <path d="M17.9932 17H18.0067" stroke="#6A8AFF" stroke-width="3" stroke-linecap="round"
+                <path d="M17.9932 17H18.0067" stroke="#277E37" stroke-width="3" stroke-linecap="round"
                     stroke-linejoin="round" />
-                <path d="M11.9918 17H12.0052" stroke="#6A8AFF" stroke-width="3" stroke-linecap="round"
+                <path d="M11.9918 17H12.0052" stroke="#277E37" stroke-width="3" stroke-linecap="round"
                     stroke-linejoin="round" />
             </svg>
         </button>

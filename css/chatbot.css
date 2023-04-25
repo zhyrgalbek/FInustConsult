@@ -14,6 +14,7 @@
     margin-bottom: 30px;
     overflow: hidden;
     box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+    box-shadow: 0 0.13333em 0.66667em rgba(0, 0, 0, 0.2);
 }
 
 @media screen and (max-width: 768px) {
@@ -28,8 +29,8 @@
 }
 
 .chatbotHeader {
-    background: #6A8AFF;
-    /* background-color: var(--main-bg-color); */
+    /* background: #6A8AFF; */
+    background-color: var(--main-bg-color);
     color: #fff;
     padding: 20px 10px;
     padding-bottom: 10px;
@@ -83,8 +84,8 @@
 
 .chatbotForm>button {
     padding: 10px;
-    background: #6A8AFF;
-    /* background-color: var(--main-bg-color); */
+    /* background: #6A8AFF; */
+    background-color: var(--main-bg-color);
     border: none;
     color: #fff;
     border-radius: 6px;
@@ -280,7 +281,8 @@
     background-position: 50% 50%;
     width: 57px;
     height: 57px;
-    border: 1px solid rgba(55, 99, 255, 0.3);
+    /* border: 1px solid rgba(55, 99, 255, 0.3); */
+    border: 1px solid var(--main-bg-color);
     border-radius: 50px;
     transition: 0.2s ease;
 }
