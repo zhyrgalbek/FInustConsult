@@ -9064,17 +9064,9 @@ button.header_btn:hover {
 }
 
 .trade_offer {
-  /* background-color: var(--main-bg-color); */
-  /* background-image: url(../assets2/images/logo/pattern_gold1.png); */
-  /* background-size: 60px 50px; */
-  /* border: 1px solid red; */
-  /* background-repeat: repeat-x; */
-  /* background-position: 10px 15px; */
   color: var(--main-bg-color);
-  /* padding: 60px 20px; */
-  margin-top: -70px;
-  margin-bottom: 70px;
-  /* background-color: #fff; */
+  padding-bottom: 20px;
+  margin-top: -60px;
 }
 
 .trade_offer h2 {
@@ -9128,7 +9120,7 @@ button.header_btn:hover {
 
 .advantages {
   background-color: #fff;
-  padding: 100px 0 40px;
+  padding: 60px 0 40px;
 }
 
 .advantages_header>h3 {
@@ -9471,7 +9463,7 @@ a.about_info:active {
 /* specialists */
 
 .specialists {
-  padding: 100px 0;
+  padding: 60px 0;
   background-color: #f4f7f9;
 }
 
@@ -9490,7 +9482,38 @@ a.about_info:active {
   /* color: var(--main-text-color); */
 }
 
-.specialists_card_main_header h3 {
+.specialists_card_main_header {
+  height: 350px;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: hsl(0 0% 50%);
+  padding-right: 20px;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+
+.specialists_card_main_header::-webkit-scrollbar {
+  width: 5px;
+}
+
+.specialists_card_main_header::-webkit-scrollbar-track {
+  background: #fff;
+  /* Цвет дорожки */
+}
+
+.specialists_card_main_header::-webkit-scrollbar-thumb {
+  background-color: #C4C4C4;
+  /* Цвет бегунка */
+  border-radius: 20px;
+  /* Округление бегунка */
+  border: 3px solid #C4C4C4;
+  /* Оформление границ бегунка */
+}
+
+
+
+.specialists_card_main h3 {
   font-weight: 600;
   /* color: #fff; */
   /* background-color: var(--main-bg-color); */
@@ -9499,7 +9522,7 @@ a.about_info:active {
   border-radius: 6px;
 }
 
-.specialists_card_main_header p,
+
 .specialists_card_main_header li {
   /* color: var(--main-bg-color); */
   /* font-weight: 500; */
@@ -9569,6 +9592,13 @@ a.about_info:active {
   width: 320px;
 }
 
+
+@media screen and (max-width: 1400px) {
+  .specialists_card_main {
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .specialists_card_main {
     text-align: center;
@@ -9613,7 +9643,7 @@ a.about_info:active {
 
 .hr_top {
   margin: 0;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 .hr_bottom {
@@ -9653,20 +9683,44 @@ a.about_info:active {
 
 @media screen and (max-width: 600px) {
   .trust_card {
-    padding: 15px;
     margin: 10px;
+    padding: 20px;
     /* margin: 0 5px; */
   }
 }
 
 .trust_card p {
+  /* border: 1px solid red; */
   text-align: left;
-  height: 550px;
+  height: 350px;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: hsl(0 0% 50%);
+  padding-right: 20px;
+}
+
+.trust_card p::-webkit-scrollbar {
+  width: 5px;
+}
+
+.trust_card p::-webkit-scrollbar-track {
+  background: #fff;
+  /* Цвет дорожки */
+}
+
+.trust_card p::-webkit-scrollbar-thumb {
+  background-color: #C4C4C4;
+  /* Цвет бегунка */
+  border-radius: 20px;
+  /* Округление бегунка */
+  border: 3px solid #C4C4C4;
+  /* Оформление границ бегунка */
 }
 
 .trust_img {
   margin-top: 30px;
   width: 100%;
+  padding: 30px 30px;
   height: 150px;
   overflow: hidden;
   /* border: 1px solid red; */
@@ -9701,7 +9755,7 @@ a.about_info:active {
 
 .footer {
   position: relative;
-  padding: 80px 0;
+  padding: 40px 0;
   padding-bottom: 0;
   /* height: 500px; */
   background-color: #2c3541;
@@ -9717,7 +9771,7 @@ a.about_info:active {
 
 .footer_header {
   border-bottom: 1px solid var(--main-text-color);
-  padding-bottom: 40px;
+  padding-bottom: 20px;
 }
 
 .footer_header h2 {
@@ -9737,7 +9791,7 @@ a.about_info:active {
 }
 
 .footer_main {
-  padding: 60px 0;
+  padding: 20px 0;
   display: flex;
   justify-content: space-between;
   flex-flow: row wrap;
@@ -9852,7 +9906,7 @@ a.about_info:active {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px;
+  padding: 20px;
 }
 
 .footer_bottom p {
@@ -9988,8 +10042,9 @@ ul.dropdown_menu {
   padding: 0px;
   margin: 0;
   border-radius: 6px;
-  width: 250px;
+  width: 350px;
   overflow: hidden;
+  box-shadow: 0 0.13333em 0.66667em rgba(0, 0, 0, 0.2);
   display: none;
 }
 
@@ -10061,12 +10116,14 @@ ul.dropdown_menu li a.dropdown_item {
   /* border: 1px solid #F4F7F9; */
   padding: 15px;
   color: var(--main-bg-color);
+  transition: 0.2s ease-in;
   /* color: var(--main-text-color); */
 }
 
 ul.dropdown_menu li a.dropdown_item:hover {
   background-color: var(--main-bg-color);
   color: #fff;
+  transition: 0.2s ease-in;
 }
 
 .reviews li {

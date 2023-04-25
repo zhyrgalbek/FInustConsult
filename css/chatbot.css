@@ -31,7 +31,8 @@
     background: #6A8AFF;
     /* background-color: var(--main-bg-color); */
     color: #fff;
-    padding: 10px;
+    padding: 20px 10px;
+    padding-bottom: 10px;
     font-family: Ubuntu, "Helvetica Neue", Arial, sans-serif;
 }
 

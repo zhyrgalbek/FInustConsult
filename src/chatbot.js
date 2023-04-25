@@ -65,7 +65,6 @@ for (let i = 0; i < chatbot_questions.children.length; i++) {
 }
 let m = [];
 for (let i = 0; i < questions.children.length; i++) {
-    console.log(questions.children[i])
     let obj = {};
     for (let j = 0; j < questions.children[i].children.length; j++) {
         obj[questions.children[i].children[j].dataset.name] = questions.children[i].children[j].innerText;

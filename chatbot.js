@@ -52,7 +52,6 @@ for (var i = 0; i < chatbot_questions.children.length; i++) {
 }
 var m = [];
 for (var _i = 0; _i < questions.children.length; _i++) {
-    console.log(questions.children[_i]);
     var obj = {};
     for (var j = 0; j < questions.children[_i].children.length; j++) {
         obj[questions.children[_i].children[j].dataset.name] = questions.children[_i].children[j].innerText;

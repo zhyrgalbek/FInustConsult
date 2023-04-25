@@ -20,6 +20,11 @@
     margin-bottom: 40px;
 }
 
+.blog_item_text {
+    height: 140px;
+    overflow: hidden;
+}
+
 @media screen and (max-width: 768px) {
     .about_main {
         padding: 0;
@@ -118,8 +123,8 @@
 
 .category_a_active,
 .category_a_active:hover {
-    border: none;
-    box-shadow: none;
+    border-color: transparent;
+    box-shadow: 0 0.13333em 0.66667em rgba(0, 0, 0, 0.0);
 }
 
 ul.dropdowCatgeory {
@@ -148,6 +153,7 @@ ul.dropdowCatgeory {
 
 ul.dropdowCatgeory li {
     list-style: none;
+    margin-bottom: 20px;
     /* border: 1px solid red; */
 }
 

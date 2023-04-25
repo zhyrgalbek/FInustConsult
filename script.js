@@ -66,25 +66,25 @@ btn_close.addEventListener('click', function () {
 hamburger.addEventListener('click', function () {
     hamburger.classList.toggle('is-active');
 })
-var map;
+// var map;
 
-DG.then(function () {
-    map = DG.map('map', {
-        center: [42.884147, 74.589958],
-        zoom: 13
-    });
+// DG.then(function () {
+//     map = DG.map('map', {
+//         center: [42.884147, 74.589958],
+//         zoom: 13
+//     });
 
-    DG.marker([42.88401467044253, 74.58993673324586]).addTo(map).bindPopup('Вы кликнули по мне!');
-});
-var map2;
-DG.then(function () {
-    map2 = DG.map('map2', {
-        center: [42.884147, 74.589958],
-        zoom: 13
-    });
+//     DG.marker([42.88401467044253, 74.58993673324586]).addTo(map).bindPopup('Вы кликнули по мне!');
+// });
+// var map2;
+// DG.then(function () {
+//     map2 = DG.map('map2', {
+//         center: [42.884147, 74.589958],
+//         zoom: 13
+//     });
 
-    DG.marker([42.884147, 74.589958]).addTo(map2).bindPopup('Вы кликнули по мне!');
-});
+//     DG.marker([42.884147, 74.589958]).addTo(map2).bindPopup('Вы кликнули по мне!');
+// });
 
 const myModal = document.getElementById('myModal')
 const myInput = document.getElementById('myInput')
@@ -112,8 +112,10 @@ let dropdowCatgeory = document.querySelector('.dropdowCatgeory');
 window.addEventListener('click', function (e) {
     e.stopPropagation();
     if (e.target.dataset.name !== 'categorydropdown') {
-        dropdowCatgeory.classList.remove('show');
-        rubrika.classList.remove('category_a_active');
+        if (dropdowCatgeory.classList.contains('show')) {
+            dropdowCatgeory.classList.remove('show');
+            rubrika.classList.remove('category_a_active');
+        }
     }
 })
 
