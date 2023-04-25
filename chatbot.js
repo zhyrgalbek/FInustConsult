@@ -11,7 +11,7 @@ var chatbotText = [[{
 }, {
     text: 'Рады были Вам помочь! Спасибо за обращение!'
 }, {
-    text: 'Более подробные ответы вы получите связавшись по whatsapp: '
+    text: 'Более подробные ответы вы получите связавшись по номеру +996 554 430 000 '
 }, {
     text: 'Введите ваше сообщение'
 }, {
@@ -141,6 +141,20 @@ var WatsappComponent = function WatsappComponent() {
         React.Fragment,
         null,
         chatbotText[0][3].text,
+        React.createElement('br', null),
+        React.createElement(
+            'div',
+            { 'class': 'telephone chatbotTelephone', style: { display: 'inline-flex' } },
+            React.createElement(
+                'a',
+                { href: 'tel:+996554430000' },
+                React.createElement(
+                    'svg',
+                    { width: '20', height: '20', viewBox: '0 0 88 92', fill: 'none', xmlns: 'http://www.w3.org/2000/svg' },
+                    React.createElement('path', { d: 'M22.5 6.5L16.5 1H11.5L8.5 3.5L4.5 8L1 15.5V31L1.5 32.5L6.5 44.5L17 59L27.5 70.5L37.5 79.5L53.5 88.5C56.1667 89.1667 61.6 90.6 62 91C62.4 91.4 69.5 90.8333 73 90.5C74.6667 90 78.1 88.9 78.5 88.5C78.9 88.1 81.6667 86 83 85L87.5 80V74L87 73.5L86 72L84 70L79 64.5L71.5 57L69.5 56L67 55.5H64.5L62.5 57L55 64.5H54.5L51.5 62.5L47 59.5L42 55.5L37.5 51L33.5 46.5L28.5 38.5L26 34.5L27.5 32.5L31 29L34 25.5L35 22.5L34.5 19.5L34 18L31 15L22.5 6.5Z', fill: '#277E37', stroke: '#277E37' })
+                )
+            )
+        ),
         React.createElement(
             'a',
             { href: 'https://wa.me/+996554430000', className: 'soc_set', title: 'whatsapp' },

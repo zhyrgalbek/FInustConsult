@@ -287,3 +287,7 @@
 .chatbotBtnBlock:hover {
     /* background-color: #6A8AFF; */
 }
+
+.chatbotTelephone {
+    border-radius: 50%;
+}
