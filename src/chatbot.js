@@ -417,7 +417,7 @@ const ChatBot = ({ handleClose }) => {
                 }
             </div>
             <form className="chatbotForm" onSubmit={handleSubmit}>
-                <input type="text" value={input} onChange={handleChange} placeholder="Введите текст" />
+                <input type="text" value={input} onChange={handleChange} placeholder="Введите текст" autoFocus />
                 <button type="submit">отправить</button>
             </form>
         </div >

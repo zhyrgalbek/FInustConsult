@@ -104,6 +104,16 @@ form.addEventListener('submit', function (e) {
         e.preventDefault();
     }
 })
+let consulting_form = document.getElementById('consulting_form');
+let flexCheckDefault = document.getElementById('flexCheckDefault');
+
+consulting_form.addEventListener('submit', function (e) {
+    if (!flexCheckDefault.checked) {
+        consulting_form.classList.add('was-validated');
+        e.preventDefault();
+    }
+})
+
 
 let rubrika = document.querySelector('#category_a')
 let dropdowCatgeory = document.querySelector('.dropdowCatgeory');

@@ -480,7 +480,7 @@ var ChatBot = function ChatBot(_ref2) {
         React.createElement(
             'form',
             { className: 'chatbotForm', onSubmit: handleSubmit },
-            React.createElement('input', { type: 'text', value: input, onChange: handleChange, placeholder: '\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0442\u0435\u043A\u0441\u0442' }),
+            React.createElement('input', { type: 'text', value: input, onChange: handleChange, placeholder: '\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0442\u0435\u043A\u0441\u0442', autoFocus: true }),
             React.createElement(
                 'button',
                 { type: 'submit' },
