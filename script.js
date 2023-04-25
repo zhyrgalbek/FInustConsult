@@ -105,20 +105,21 @@ form.addEventListener('submit', function (e) {
     }
 })
 
-let rubrika = document.querySelector('.category');
+let rubrika = document.querySelector('#category_a')
+let dropdowCatgeory = document.querySelector('.dropdowCatgeory');
+
 
 window.addEventListener('click', function (e) {
-    console.log(e.target)
-    // rubrika.nextElementSibling.classList.remove('show');
+    e.stopPropagation();
+    if (e.target.dataset.name !== 'categorydropdown') {
+        dropdowCatgeory.classList.remove('show');
+        rubrika.classList.remove('category_a_active');
+    }
 })
 
-rubrika.addEventListener('click', function () {
-    console.log(this.nextElementSibling)
-    this.children[2].classList.toggle('show');
-
+rubrika.addEventListener('click', function (e) {
+    e.preventDefault();
+    this.classList.toggle('category_a_active');
+    dropdowCatgeory.classList.toggle('show');
 })
-
-// myModal.addEventListener('shown.bs.modal', () => {
-//     myInput.focus()
-// })
 

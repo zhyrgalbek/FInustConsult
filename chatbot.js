@@ -11,7 +11,7 @@ var chatbotText = [[{
 }, {
     text: 'Рады были Вам помочь! Спасибо за обращение!'
 }, {
-    text: 'Если вы не получили ответ на свой вопрос, напишите нам на почту ceofinjust@gmail.com'
+    text: 'Более подробные ответы вы получите связавшись по whatsapp: '
 }, {
     text: 'Введите ваше сообщение'
 }, {
@@ -136,7 +136,25 @@ var ChatList = function ChatList(_ref) {
     );
 };
 
-var words = [['првет', 'привет', 'ghbdtn', 'здравствуй'], ['Привет', 'Здравствуйте', 'Добрый день', 'Рад тебя видеть!'], ['Пока', 'До свидания', 'пока'], ['Пока', 'До свидания', 'Приходи еше', 'Я буду скучать!']];
+var WatsappComponent = function WatsappComponent() {
+    return React.createElement(
+        React.Fragment,
+        null,
+        chatbotText[0][3].text,
+        React.createElement(
+            'a',
+            { href: 'https://wa.me/+996554430000', className: 'soc_set', title: 'whatsapp' },
+            React.createElement('img', { src: './assets2/images/logo/whatsapp.svg', width: '38', height: '38', alt: 'whatsapp' })
+        ),
+        React.createElement(
+            'a',
+            { href: 'https://t.me/+996554430000', className: 'soc_set', title: 'telegram' },
+            React.createElement('img', { src: './assets2/images/logo/telegram.svg', width: '38', height: '38', alt: 'telegram' })
+        )
+    );
+};
+
+var words = [['првет', 'привет', 'ghbdtn', 'здравствуй', 'Привет', 'Ghbdtn'], ['Привет', 'Здравствуйте', 'Добрый день', 'Рад тебя видеть!'], ['Пока', 'До свидания', 'пока'], ['Пока', 'До свидания', 'Приходи еше', 'Я буду скучать!']];
 
 function answering(words, elem) {
     for (var _i3 = 0; _i3 < words[0].length; _i3++) {
@@ -231,6 +249,25 @@ var ChatBot = function ChatBot(_ref2) {
             });
         }, 1000);
         setTimeout(function () {
+            setTimeout(function () {
+                setMessages(function (prev) {
+                    var arr = prev.filter(function (elem) {
+                        return elem.variant !== 'vopros';
+                    });
+                    arr = [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: React.createElement('div', { className: 'loader' }), variant: 'loader' }]);
+                    return arr;
+                });
+            }, 1000);
+            setTimeout(function () {
+                setMessages(function (prev) {
+                    var arr = prev.filter(function (elem) {
+                        return elem.variant !== 'loader';
+                    });
+                    var date = new Date();
+                    arr = [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: React.createElement(WatsappComponent, null), variant: 'vopros', time: date.getHours() + ':' + date.getMinutes() }]);
+                    return arr;
+                });
+            }, 2000);
             setMessages(function (prev) {
                 var arr = prev.filter(function (elem) {
                     return elem.variant !== 'loader';

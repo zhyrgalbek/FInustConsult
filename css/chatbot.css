@@ -9,18 +9,21 @@
     position: absolute;
     bottom: -30px;
     right: 0;
-    width: 350px;
+    width: 390px;
     border-radius: 6px;
     margin-bottom: 30px;
     overflow: hidden;
     box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
-
 }
 
-@media screen and (max-width: 568px) {
+@media screen and (max-width: 768px) {
     .chatbotBlock {
-        right: none;
-        width: 90vw;
+        right: -18px;
+        bottom: -40px;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
     }
 }
 
@@ -52,15 +55,21 @@
     overflow: auto;
     display: flex;
     flex-direction: column;
-    height: 370px;
+    height: 435px;
     line-height: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+    .chatbotWindow {
+        flex-grow: 1;
+    }
 }
 
 .chatbotForm {
     background: #fff;
     padding: 10px;
     display: flex;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
 }
 
 .chatbotForm>input {
@@ -107,7 +116,7 @@
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin: 0;
     padding: 10px;
     font-family: Ubuntu, "Helvetica Neue", Arial, sans-serif;
@@ -134,18 +143,19 @@
     padding: 0;
     list-style: none;
     width: 260px;
+    margin-top: 10px;
 }
 
 .chatListItem {
     border-radius: 6px;
-    padding: 5px;
+    padding: 8px 10px;
     text-align: left;
     color: #fff;
     background: #408591;
     margin-bottom: 4px;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 300;
-    line-height: 1rem;
+    line-height: 1.3rem;
     font-family: Ubuntu, "Helvetica Neue", Arial, sans-serif;
     cursor: pointer;
 }
@@ -153,7 +163,6 @@
 @media screen and (max-width: 568px) {
     .chatListItem {
         font-size: 1rem;
-
     }
 }
 
@@ -179,7 +188,8 @@
     /* margin-left: 40px; */
     margin-right: 35px;
     position: relative;
-    top: -28px;
+    top: -24.5px;
+
     left: 15px;
     /* width: 200px; */
     text-indent: -9999em;
@@ -188,6 +198,12 @@
     transform: translateZ(0);
     -webkit-animation-delay: -0.16s;
     animation-delay: -0.16s;
+}
+
+@media screen and (max-width: 768px) {
+    .loader {
+        top: -23px;
+    }
 }
 
 .loader:before,

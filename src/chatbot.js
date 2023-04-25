@@ -12,7 +12,7 @@ const chatbotText = [
             text: 'Рады были Вам помочь! Спасибо за обращение!'
         },
         {
-            text: 'Если вы не получили ответ на свой вопрос, напишите нам на почту ceofinjust@gmail.com'
+            text: 'Более подробные ответы вы получите связавшись по whatsapp: '
         },
         {
             text: 'Введите ваше сообщение'
@@ -129,6 +129,18 @@ const ChatList = ({ data, onClick }) => {
     </React.Fragment>
 }
 
+const WatsappComponent = () => {
+    return <React.Fragment>
+        {chatbotText[0][3].text}
+        <a href="https://wa.me/+996554430000" className="soc_set" title="whatsapp">
+            <img src="./assets2/images/logo/whatsapp.svg" width="38" height="38" alt="whatsapp" />
+        </a>
+        <a href="https://t.me/+996554430000" className="soc_set" title="telegram">
+            <img src="./assets2/images/logo/telegram.svg" width="38" height="38" alt="telegram" />
+        </a>
+    </React.Fragment>
+}
+
 let words = [
     [
         'првет',
@@ -233,6 +245,21 @@ const ChatBot = ({ handleClose }) => {
             })
         }, 1000)
         setTimeout(() => {
+            setTimeout(() => {
+                setMessages((prev) => {
+                    let arr = prev.filter(elem => elem.variant !== 'vopros');
+                    arr = [...arr, { id: Date.now(), text: <div className="loader"></div>, variant: 'loader' }];
+                    return arr;
+                })
+            }, 1000)
+            setTimeout(() => {
+                setMessages((prev) => {
+                    let arr = prev.filter(elem => elem.variant !== 'loader');
+                    let date = new Date();
+                    arr = [...arr, { id: Date.now(), text: <WatsappComponent />, variant: 'vopros', time: `${date.getHours()}:${date.getMinutes()}` }]
+                    return arr;
+                });
+            }, 2000)
             setMessages((prev) => {
                 let arr = prev.filter(elem => elem.variant !== 'loader');
                 let date = new Date();

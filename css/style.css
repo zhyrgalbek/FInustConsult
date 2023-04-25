@@ -10133,7 +10133,7 @@ ul.dropdown_menu li a.dropdown_item:hover {
   height: auto;
   right: 0;
   bottom: 0;
-  z-index: 1000;
+  z-index: 1010;
   /* background-color: #fff; */
 }
 
