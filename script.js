@@ -1,3 +1,6 @@
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+
 $(function () {
     $.mask.definitions['9'] = false;
     $.mask.definitions['5'] = "[0-9]";
@@ -21,6 +24,27 @@ $(function () {
                 breakpoint: 1200,
                 settings: {
                     slidesToShow: 2,
+                }
+            }
+        ]
+    })
+    $('.blog-item').slick({
+        infinite: true,
+        dots: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        nav: true,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                }
+            },
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 1,
                 }
             }
         ]
@@ -93,6 +117,25 @@ const myInput = document.getElementById('myInput')
 
 ///validation Form
 
+let consulting_form = document.getElementById('consulting_form');
+let flexCheckDefault = document.getElementById('flexCheckDefault');
+let checkboxTooltip = document.querySelector('.checkboxTooltip');
+
+if (consulting_form) {
+    consulting_form.addEventListener('submit', function (e) {
+        if (!flexCheckDefault.checked) {
+            e.preventDefault();
+            this.classList.add('was-validated');
+            checkboxTooltip.classList.add('checkboxTooltip_show');
+            setTimeout(() => {
+                checkboxTooltip.classList.remove('checkboxTooltip_show');
+            }, 1500)
+        }
+    })
+}
+
+
+
 let name = document.getElementById('name');
 let tel = document.getElementById('tel');
 let form = document.getElementById('form');
@@ -104,34 +147,30 @@ form.addEventListener('submit', function (e) {
         e.preventDefault();
     }
 })
-let consulting_form = document.getElementById('consulting_form');
-let flexCheckDefault = document.getElementById('flexCheckDefault');
-
-consulting_form.addEventListener('submit', function (e) {
-    if (!flexCheckDefault.checked) {
-        consulting_form.classList.add('was-validated');
-        e.preventDefault();
-    }
-})
 
 
-let rubrika = document.querySelector('#category_a')
+
+
+
+
+let rubrika = document.querySelector('.category_a');
 let dropdowCatgeory = document.querySelector('.dropdowCatgeory');
 
-
-window.addEventListener('click', function (e) {
-    e.stopPropagation();
-    if (e.target.dataset.name !== 'categorydropdown') {
-        if (dropdowCatgeory.classList.contains('show')) {
-            dropdowCatgeory.classList.remove('show');
-            rubrika.classList.remove('category_a_active');
+if (rubrika && dropdowCatgeory) {
+    window.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (e.target.dataset.name !== 'categorydropdown') {
+            if (dropdowCatgeory.classList.contains('show')) {
+                dropdowCatgeory.classList.remove('show');
+                rubrika.classList.remove('category_a_active');
+            }
         }
-    }
-})
+    })
 
-rubrika.addEventListener('click', function (e) {
-    e.preventDefault();
-    this.classList.toggle('category_a_active');
-    dropdowCatgeory.classList.toggle('show');
-})
+    rubrika.addEventListener('click', function (e) {
+        e.preventDefault();
+        this.classList.toggle('category_a_active');
+        dropdowCatgeory.classList.toggle('show');
+    })
+}
 

@@ -9382,6 +9382,7 @@ a.about_info:active {
 
 .consulting_form {
   /* border: 1px solid red; */
+  position: relative;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -9439,6 +9440,7 @@ a.about_info:active {
 
 .consulting_form_text label {
   color: #fff;
+  position: relative;
 }
 
 .form-check-input {
@@ -9689,26 +9691,68 @@ a.about_info:active {
   }
 }
 
-.trust_card p {
+.trust_card_text {
   /* border: 1px solid red; */
   text-align: left;
   height: 350px;
   overflow: auto;
   scrollbar-width: thin;
   scrollbar-color: hsl(0 0% 50%);
+  -webkit-scrollbar-width: thin;
+  -webkit-scrollbar-color: hsl(0 0% 50%);
+  -moz-scrollbar-width: thin;
+  -moz-scrollbar-color: hsl(0 0% 50%);
+  -ms-scrollbar-width: thin;
+  -ms-scrollbar-color: hsl(0 0% 50%);
   padding-right: 20px;
 }
 
-.trust_card p::-webkit-scrollbar {
+.trust_card_text::-webkit-scrollbar {
   width: 5px;
 }
 
-.trust_card p::-webkit-scrollbar-track {
+.trust_card_text::-webkit-scrollbar-track {
   background: #fff;
   /* Цвет дорожки */
 }
 
-.trust_card p::-webkit-scrollbar-thumb {
+.trust_card_text::-webkit-scrollbar-thumb {
+  background-color: #C4C4C4;
+  /* Цвет бегунка */
+  border-radius: 20px;
+  /* Округление бегунка */
+  border: 3px solid #C4C4C4;
+  /* Оформление границ бегунка */
+}
+
+.trust_card_text::-moz-scrollbar {
+  width: 5px;
+}
+
+.trust_card_text::-moz-scrollbar-track {
+  background: #fff;
+  /* Цвет дорожки */
+}
+
+.trust_card_text::-moz-scrollbar-thumb {
+  background-color: #C4C4C4;
+  /* Цвет бегунка */
+  border-radius: 20px;
+  /* Округление бегунка */
+  border: 3px solid #C4C4C4;
+  /* Оформление границ бегунка */
+}
+
+.trust_card_text::-ms-scrollbar {
+  width: 5px;
+}
+
+.trust_card_text::-ms-scrollbar-track {
+  background: #fff;
+  /* Цвет дорожки */
+}
+
+.trust_card_text::-ms-scrollbar-thumb {
   background-color: #C4C4C4;
   /* Цвет бегунка */
   border-radius: 20px;
@@ -10039,7 +10083,7 @@ ul.dropdown_menu {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  padding: 0px;
+  padding: 20px 0px;
   margin: 0;
   border-radius: 6px;
   width: 350px;
@@ -10120,10 +10164,25 @@ ul.dropdown_menu li a.dropdown_item {
   /* color: var(--main-text-color); */
 }
 
+.dropdown_item_text {
+  display: flex;
+  align-items: center;
+}
+
+.m-icons {
+  color: var(--main-text-color) !important;
+  margin-right: 10px;
+  /* font-weight: 800; */
+}
+
 ul.dropdown_menu li a.dropdown_item:hover {
   background-color: var(--main-bg-color);
   color: #fff;
   transition: 0.2s ease-in;
+}
+
+ul.dropdown_menu li a.dropdown_item:hover .m-icons {
+  color: #fff !important;
 }
 
 .reviews li {
@@ -10221,7 +10280,7 @@ button.slick-arrow {
   width: 60px;
   height: 60px;
   /* border: 1px solid green; */
-  background-color: var(--main-bg-color);
+  /* background-color: var(--main-bg-color); */
   background-image: url(../assets2/images/logo/prev.svg);
   border-radius: 50%;
   background-size: contain;
@@ -10236,7 +10295,7 @@ button.slick-arrow {
   width: 60px;
   height: 60px;
   /* border: 1px solid green; */
-  background-color: var(--main-bg-color);
+  /* background-color: var(--main-bg-color); */
   border-radius: 50%;
   background-image: url(../assets2/images/logo/next.svg);
   background-size: contain;
@@ -10255,4 +10314,36 @@ button.slick-arrow {
     width: 100%;
     height: 300px;
   }
+}
+
+.checkboxTooltip {
+  /* border: 1px solid red; */
+  position: absolute;
+  top: 38%;
+  left: -20px;
+  background-color: #fff;
+  text-align: center;
+  padding: 8px;
+  border-radius: 6px;
+  box-shadow: 0 0.13333em 0.66667em rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: 0.2s ease-in;
+}
+
+.checkboxTooltip_show {
+  opacity: 1;
+  transition: 0.2s ease-in;
+}
+
+.checkboxTooltip::after {
+  content: "";
+  position: absolute;
+  /* Абсолютное позиционирование */
+  left: 20px;
+  bottom: -20px;
+  /* Положение треугольника */
+  border: 10px solid transparent;
+  /* Прозрачные границы */
+  border-top: 10px solid #fff;
+  /* Добавляем треугольник */
 }

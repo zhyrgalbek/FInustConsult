@@ -11,6 +11,34 @@
     background-color: #F4F7F9;
 }
 
+.article_main {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    padding-bottom: 60px;
+}
+
+.article_main p {
+    font-size: 1.1rem;
+}
+
+@media screen and (max-width: 768px) {
+    .article_main {
+        font-size: 0.9rem;
+        line-height: 1.6rem;
+    }
+}
+
+
+.article_main li {
+    font-size: 1.1rem;
+    /* margin-bottom: 3px; */
+}
+
+.article_main li::after {
+    content: "";
+}
+
 
 
 .blog_item {
@@ -18,7 +46,18 @@
     border-radius: 8px;
     background-color: #fff;
     margin-bottom: 40px;
+    transition: 0.2s ease-in;
 }
+
+
+.blog_item_none {
+    padding: 20px;
+}
+
+.blog_item_none:hover {
+    background-color: #F4F7F9;
+}
+
 
 .blog_item_text {
     height: 140px;
@@ -30,15 +69,34 @@
         padding: 0;
     }
 
+    .article_main {
+        padding: 20px;
+    }
+
     .blog_item {
         padding: 40px 20px;
     }
+
+    .blog_item_none {
+        padding: 0;
+    }
 }
 
-.blog_item_header {
+.blog_hashs {
+    padding: 0 30px;
+}
+
+.blog_item_header a {
     font-size: 1.6rem;
     font-weight: 600;
+    color: #212529;
+    text-decoration: none;
     /* margin-bottom: 25px; */
+}
+
+
+.blog_item_header a:hover {
+    text-decoration: underline;
 }
 
 .blog_img {
@@ -100,6 +158,7 @@
     color: #000;
     background-color: #fff;
     border: 0.07143em solid rgba(17, 85, 204, 0.5);
+    border: 0.07143em solid var(--main-bg-color);
     font-size: 1.2rem;
     font-weight: 600;
     /* margin-left: 10px; */
@@ -137,7 +196,7 @@ ul.dropdowCatgeory {
     position: absolute;
     top: -10px;
     left: -35px;
-    padding-left: 50px;
+    padding-left: 10px;
     padding-top: 60px;
     padding-right: 30px;
     padding-bottom: 20px;
@@ -154,7 +213,14 @@ ul.dropdowCatgeory {
 ul.dropdowCatgeory li {
     list-style: none;
     margin-bottom: 20px;
+    font-size: 24px;
     /* border: 1px solid red; */
+}
+
+.m-icons-category {
+    font-size: 1.4rem !important;
+    margin-right: 10px;
+    color: var(--main-text-color) !important;
 }
 
 ul.dropdowCatgeory a {
@@ -167,4 +233,21 @@ ul.dropdowCatgeory a {
 
 ul.dropdowCatgeory a:hover {
     text-decoration: underline;
+    /* background-color: var(--main-bg-color); */
+}
+
+.page-item a.page-link {
+    color: var(--main-bg-color);
+}
+
+.pageItemActive>.page-link {
+    background-color: var(--main-bg-color) !important;
+    color: #fff !important;
+}
+
+.line {
+    border: 1px solid #BFC2C5;
+    border-top: none;
+    margin-top: 45px;
+    margin-bottom: 45px;
 }
