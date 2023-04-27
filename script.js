@@ -46,6 +46,34 @@ $(function () {
         ]
     })
 
+    // let number = document.querySelector('.count');
+    // let numberTop = number.getBoundingClientRect().top;
+    // let start = +number.innerHTML;
+    // let end = +number.dataset.max;
+
+    // window.addEventListener('scroll', function onScroll() {
+    //     if (this.window.pageYOffset > numberTop - this.window.innerHeight / 2) {
+    //         this.removeEventListener('scroll', onScroll);
+    //         var interval = this.setInterval(function () {
+    //             number.innerHTML = ++start;
+    //             if (start == end) {
+    //                 clearInterval(interval);
+    //             }
+    //         }, 5)
+    //     }
+    // })
+
+    // $('.count').each(function () {
+    //     $(this).prop('Counter', 0).animate({
+    //         Counter: $(this).text()
+    //     }, {
+    //         duration: 4000,
+    //         easing: 'swing',
+    //         step: function (now) {
+    //             $(this).text(Math.ceil(now));
+    //         }
+    //     })
+    // })
 })
 
 

@@ -225,9 +225,8 @@ ul.dropdowCatgeory li {
 }
 
 .m-icons-category {
-    font-size: 1.4rem !important;
-    margin-right: 10px;
-    color: var(--main-text-color) !important;
+    margin-right: 10px !important;
+    margin-left: 10px;
 }
 
 ul.dropdowCatgeory a {
