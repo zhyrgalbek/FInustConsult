@@ -39,14 +39,10 @@ $(function () {
                 breakpoint: 768,
                 settings: {
                     slidesToShow: 1,
+                    arrows: false
+                    // dots: false,
                 }
             },
-            {
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 1,
-                }
-            }
         ]
     })
 
@@ -125,10 +121,19 @@ if (consulting_form) {
     consulting_form.addEventListener('submit', function (e) {
         if (!flexCheckDefault.checked) {
             e.preventDefault();
+            if (window.animate_time) {
+                clearTimeout(animate_time);
+            }
             this.classList.add('was-validated');
             checkboxTooltip.classList.add('checkboxTooltip_show');
-            setTimeout(() => {
-                checkboxTooltip.classList.remove('checkboxTooltip_show');
+            checkboxTooltip.classList.add('animate__fadeIn');
+            window.animate_time = setTimeout(() => {
+                setTimeout(() => {
+                    checkboxTooltip.classList.remove('checkboxTooltip_show');
+                    checkboxTooltip.classList.remove('animate__fadeOut');
+                }, 1500)
+                checkboxTooltip.classList.remove('animate__fadeIn');
+                checkboxTooltip.classList.add('animate__fadeOut');
             }, 1500)
         }
     })

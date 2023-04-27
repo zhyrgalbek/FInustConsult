@@ -52,6 +52,7 @@
 
 .blog_item_none {
     padding: 20px;
+    margin-bottom: 0;
 }
 
 .blog_item_none:hover {
@@ -84,6 +85,12 @@
 
 .blog_hashs {
     padding: 0 30px;
+}
+
+@media screen and (max-width: 768px) {
+    .blog_hashs {
+        padding: 0;
+    }
 }
 
 .blog_item_header a {

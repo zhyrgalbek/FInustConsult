@@ -8,7 +8,8 @@
     "hamburgers": "^1.2.1",
     "jquery": "^3.6.4",
     "owl-carousel": "^1.0.0",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "wow.js": "^1.2.2"
   },
   "devDependencies": {
     "html-importer": "^0.1.3"

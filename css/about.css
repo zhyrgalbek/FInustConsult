@@ -144,6 +144,8 @@ table th {
     align-items: center;
 }
 
+
+
 .share h2 {
     /* border: 1px solid red; */
     /* font-size: 1.2rem; */
@@ -151,6 +153,7 @@ table th {
     text-align: left;
     color: var(--main-bg-color);
     margin-right: 20px;
+    /* margin-bottom: 15px; */
 }
 
 .share_icons {
@@ -161,6 +164,16 @@ table th {
 .share_icons_block {
     width: 64px;
     height: 64px;
+}
+
+@media screen and (max-width: 768px) {
+    .share {
+        flex-wrap: wrap;
+    }
+
+    .share h2 {
+        margin-bottom: 15px;
+    }
 }
 
 .share_icons_block img {

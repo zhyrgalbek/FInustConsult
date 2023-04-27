@@ -9453,9 +9453,9 @@ a.about_info:active {
   /* border-color: red; */
   /* background-color: var(--main-bg-color); */
   /* border: var(--main-bg-color); */
-  background-color: var(--main-text-color);
+  background-color: var(--main-text-color) !important;
   box-shadow: none;
-  border: 1px solid var(--main-text-color);
+  border: 1px solid var(--main-text-color) !important;
 }
 
 .form-check-input:focus {
@@ -10326,14 +10326,15 @@ button.slick-arrow {
   padding: 8px;
   border-radius: 6px;
   box-shadow: 0 0.13333em 0.66667em rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  transition: 0.2s ease-in;
+  display: none;
+  /* opacity: 1; */
+  /* transition: 0.2s ease-in; */
 }
 
 .checkboxTooltip_show {
-  opacity: 1;
-  transition: 0.2s ease-in;
+  display: block;
 }
+
 
 .checkboxTooltip::after {
   content: "";
