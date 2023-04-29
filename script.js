@@ -1,11 +1,65 @@
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.esm.browser.min.js';
+
+const swiper = new Swiper(".mySwiper", {
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    loop: true,
+    coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 350,
+        modifier: 3,
+        slideShadows: true,
+    },
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+});
+
+const swiper2 = new Swiper(".trust-swiper", {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    // loop: true,
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+        320: {
+            slidesPerView: 1,
+            spaceBetween: 20
+        },
+        1200: {
+            slidesPerView: 3,
+            spaceBetween: 20
+        },
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 20
+        },
+    }
+});
+
 $(function () {
     $.mask.definitions['9'] = false;
     $.mask.definitions['5'] = "[0-9]";
     $('.consulting_tel').mask("+996(555)-55-55-55");
     $('#tel').mask("+996(555)-55-55-55");
+
+
 
     $('.blog-item').slick({
         infinite: true,
@@ -25,69 +79,7 @@ $(function () {
         ]
     })
 
-    const swiper = new Swiper(".mySwiper", {
-        effect: "coverflow",
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: 'auto',
-        loop: true,
-        coverflowEffect: {
-            rotate: 0,
-            stretch: 0,
-            depth: 350,
-            modifier: 3,
-            slideShadows: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        // breakpoints: {
-        //     // when window width is >= 320px
-        //     320: {
-        //         slidesPerView: 'auto',
-        //         spaceBetween: 20,
-        //         modifier: 1,
-        //     },
-        //     768: {
 
-
-        //     }
-        // }
-    });
-
-    const swiper2 = new Swiper(".trust-swiper", {
-        slidesPerView: 3,
-        spaceBetween: 30,
-        // loop: true,
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        breakpoints: {
-            // when window width is >= 320px
-            320: {
-                slidesPerView: 1,
-                spaceBetween: 20
-            },
-            1200: {
-                slidesPerView: 3,
-                spaceBetween: 20
-            },
-            768: {
-                slidesPerView: 2,
-                spaceBetween: 20
-            },
-        }
-    });
 
     // let number = document.querySelector('.count');
     // let numberTop = number.getBoundingClientRect().top;
