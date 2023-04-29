@@ -7,27 +7,6 @@ $(function () {
     $('.consulting_tel').mask("+996(555)-55-55-55");
     $('#tel').mask("+996(555)-55-55-55");
 
-    $('.single-item').slick({
-        infinite: true,
-        dots: true,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        nav: true,
-        responsive: [
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                }
-            },
-            {
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 2,
-                }
-            }
-        ]
-    })
     $('.blog-item').slick({
         infinite: true,
         dots: true,
