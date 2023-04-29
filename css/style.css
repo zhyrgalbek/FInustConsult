@@ -9558,21 +9558,51 @@ a.about_info:active {
 }
 
 .specialists_card {
-  padding: 40px;
+  padding: 20px;
   border-radius: 12px;
   background-color: #fff;
+  /* width: 580px; */
   height: 100%;
   /* margin-bottom: 50px; */
   display: flex;
   justify-content: space-between;
   flex-flow: row wrap;
+  /* flex-flow: column nowrap; */
 }
 
+
+.single-experts2 .item {
+  /* border: 1px solid red; */
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+}
+
+.single-experts2 .item>div {
+  scale: 0.4;
+  position: absolute;
+  transition: 0.7s;
+  width: 600px;
+  box-shadow: 0 0.13333em 0.66667em rgba(0, 0, 0, 0.2);
+}
+
+.single-experts2 .slick-center {
+  z-index: 10;
+}
+
+.single-experts2 .slick-center>div {
+  scale: 1;
+}
+
+
 @media screen and (max-width: 600px) {
-  .specialists_card {
+  /* .specialists_card {
     padding: 20px 10px;
     padding-bottom: 40px;
-  }
+  } */
 }
 
 .specialists_card_img {
@@ -9600,19 +9630,13 @@ a.about_info:active {
   width: 320px;
 }
 
-
-@media screen and (max-width: 1400px) {
-  .specialists_card_main {
-    width: 100%;
-  }
-}
-
 @media screen and (max-width: 768px) {
   .specialists_card_main {
-    text-align: center;
     width: 100%;
   }
 }
+
+
 
 .specialists_btn {
   font-weight: 600;
@@ -9685,8 +9709,8 @@ a.about_info:active {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
-  margin-bottom: 20px;
-  margin: 0 20px;
+  /* margin-bottom: 20px; */
+  /* margin: 0 20px; */
 }
 
 @media screen and (max-width: 600px) {
@@ -10384,4 +10408,61 @@ button.slick-arrow {
   /* Прозрачные границы */
   border-top: 10px solid #fff;
   /* Добавляем треугольник */
+}
+
+.swiper {
+  width: 100%;
+  padding-left: 250px;
+  padding-right: 250px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  /* background-position: center;
+  background-size: cover; */
+  width: 600px;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+  .swiper-slide {
+    width: 100%;
+  }
+
+  .swiper {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--main-bg-color);
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--main-bg-color);
+}
+
+.swiper.trust-swiper {
+  width: 100%;
+  height: 100%;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-top: 0 !important;
+  /* padding-bottom: 130px; */
+  /* border: 1px solid red; */
+}
+
+.trust-swiper .swiper-button-next {
+  top: 90%;
+  z-index: 100000;
+  right: 40%;
+}
+
+.trust-swiper .swiper-button-prev {
+  top: 90%;
+  left: 40%;
 }
