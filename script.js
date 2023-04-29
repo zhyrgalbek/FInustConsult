@@ -2,6 +2,7 @@ const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.esm.browser.min.js';
 
+
 const swiper = new Swiper(".mySwiper", {
     effect: "coverflow",
     grabCursor: true,
@@ -58,8 +59,6 @@ $(function () {
     $.mask.definitions['5'] = "[0-9]";
     $('.consulting_tel').mask("+996(555)-55-55-55");
     $('#tel').mask("+996(555)-55-55-55");
-
-
 
     $('.blog-item').slick({
         infinite: true,
@@ -237,4 +236,3 @@ if (rubrika && dropdowCatgeory) {
         dropdowCatgeory.classList.toggle('show');
     })
 }
-
