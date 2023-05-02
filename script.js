@@ -63,6 +63,7 @@ const swiper2 = new Swiper(".trust-swiper", {
     }
 });
 
+
 $(function () {
     $.mask.definitions['9'] = false;
     $.mask.definitions['5'] = "[0-9]";
@@ -86,6 +87,7 @@ $(function () {
             },
         ]
     })
+
 
 
 
