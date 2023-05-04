@@ -257,3 +257,14 @@ ul.dropdowCatgeory a:hover {
     margin-top: 45px;
     margin-bottom: 45px;
 }
+
+.about_info, .about_info:hover{
+    color: #fff !important;
+    background-color: var(--main-bg-color) !important;
+}
+
+.about_info:active{
+    color: #fff;
+    background-color: #277E37 !important;
+    outline: 1px solid var(--main-text-color) !important;
+}

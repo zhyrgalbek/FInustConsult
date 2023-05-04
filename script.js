@@ -247,3 +247,7 @@ if (rubrika && dropdowCatgeory) {
         dropdowCatgeory.classList.toggle('show');
     })
 }
+
+document.querySelector('.layout_top').addEventListener('click', function(){
+    window.scrollTo({top: 0, left: 0, behavior: "smooth" });
+})

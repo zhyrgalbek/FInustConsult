@@ -9495,6 +9495,10 @@ a.about_info:active {
   overflow: auto;
   scrollbar-width: thin;
   scrollbar-color: hsl(0 0% 50%);
+  -moz-scrollbar-color: hsl(0 0% 50%);
+  -moz-scrollbar-width: thin;
+  -ms-scrollbar-color: hsl(0 0% 50%);
+  -ms-scrollbar-width: thin;
   padding-right: 20px;
   margin-bottom: 30px;
   margin-top: 20px;
@@ -9519,6 +9523,41 @@ a.about_info:active {
   /* Оформление границ бегунка */
 }
 
+.specialists_card_main_header::-moz-scrollbar {
+  width: 5px;
+}
+
+.specialists_card_main_header::-moz-scrollbar-track {
+  background: #fff;
+  /* Цвет дорожки */
+}
+
+.specialists_card_main_header::-moz-scrollbar-thumb {
+  background-color: #C4C4C4;
+  /* Цвет бегунка */
+  border-radius: 20px;
+  /* Округление бегунка */
+  border: 3px solid #C4C4C4;
+  /* Оформление границ бегунка */
+}
+
+.specialists_card_main_header::-ms-scrollbar {
+  width: 5px;
+}
+
+.specialists_card_main_header::-ms-scrollbar-track {
+  background: #fff;
+  /* Цвет дорожки */
+}
+
+.specialists_card_main_header::-ms-scrollbar-thumb {
+  background-color: #C4C4C4;
+  /* Цвет бегунка */
+  border-radius: 20px;
+  /* Округление бегунка */
+  border: 3px solid #C4C4C4;
+  /* Оформление границ бегунка */
+}
 
 
 .specialists_card_main h3 {
@@ -9638,7 +9677,7 @@ a.about_info:active {
 
 
 
-.specialists_btn {
+.specialists_btn,.specialists_btn:hover  {
   font-weight: 600;
   border-color: var(--main-bg-color);
   margin-bottom: 40px;
@@ -9647,9 +9686,9 @@ a.about_info:active {
     border: 1px solid var(--main-text-color); */
   color: #fff;
 }
-
-.specialists_btn:hover {
-  background-color: var(--main-bg-color);
+.specialists_btn:active{
+  background-color: var(--main-bg-color) !important;
+  outline: 1px solid var(--main-text-color) !important;
 }
 
 .emark_group {
@@ -9846,6 +9885,9 @@ a.about_info:active {
 .footer_header {
   border-bottom: 1px solid var(--main-text-color);
   padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .footer_header h2 {
@@ -10515,6 +10557,10 @@ button.slick-arrow {
   /* border: 1px solid red; */
 }
 
+.share h2{
+  font-size: 1.3rem;
+}
+
 .share-block {
   background-color: var(--main-bg-color);
   width: 38px;
@@ -10524,6 +10570,16 @@ button.slick-arrow {
   justify-content: center;
   border-radius: 8px;
   margin-right: 10px;
+}
+
+.ya-share2__container_shape_round.ya-share2__container_size_l .ya-share2__badge .ya-share2__icon:not(.ya-share2__icon_messenger-contact):not(.ya-share2__icon_more):not(.ya-share2__icon_copy){
+  background-size: 40px 34px;
+  background-repeat: no-repeat;
+}
+
+.ya-share2__container_size_l .ya-share2__badge .ya-share2__icon{
+  width: 45px !important;
+  height: 45px !important;
 }
 
 .header_top_info {
@@ -10538,4 +10594,26 @@ button.slick-arrow {
 
 .header_top_info .logo {
   height: 70px;
+}
+
+.languageblock{
+  margin-left: 20px;
+}
+
+.form-select:focus, .form-select{
+  width: 70px !important;
+  color: var(--main-bg-color);
+  font-weight: 600;
+}
+
+.layout_top{
+  /* border: 1px solid red; */
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+  background-color: var(--main-text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }

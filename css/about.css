@@ -59,7 +59,7 @@
 }
 
 .about_header {
-    font-size: 3rem;
+    font-size: 2.6rem;
     font-weight: 700;
     color: var(--main-bg-color);
     margin-bottom: 20px;
@@ -219,8 +219,8 @@ table th {
 
 a.about_info,
 a.about_info:hover {
-    background-color: var(--main-bg-color);
     background-color: #fff;
+    background-color: var(--main-bg-color);
     color: #fff;
     color: var(--main-bg-color);
     border: 1px solid var(--main-bg-color);
@@ -255,4 +255,15 @@ a.about_info:active {
 
 .dropdown_menu a.dropdown_item span {
     font-weight: 500;
+}
+
+.about_info_btn, .about_info_btn:hover{
+    color: #fff;
+    background-color: var(--main-bg-color);
+}
+
+.about_info_btn:active{
+    color: #fff;
+    background-color: #277E37 !important;
+    outline: 1px solid var(--main-text-color) !important;
 }
