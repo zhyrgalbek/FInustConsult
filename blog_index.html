@@ -670,8 +670,11 @@
         <div class="footer_shadow"></div>
         <div class="container shadowFront">
             <div class="footer_header">
-                <h2 class="section_header_text">Контакты</h2>
+                <h2 class="section_header_text consulting_header">Контакты</h2>
                 <!-- <p>Мы работаем в режиме 24/7, звоните или пишите нам на почту.</p> -->
+                <div class="layout_top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="21.12" height="8.938" viewBox="0 0 21.12 8.938" fill="#fff" data-prefix="ibivz1sew"><path d="M20.12 8.937a1.018 1.018 0 0 1-.59-.191l-8.97-6.529-8.98 6.529A1 1 0 0 1 .4 7.129L9.97.173a1 1 0 0 1 1.18 0l9.56 6.956a1 1 0 0 1-.59 1.808z" fill-rule="evenodd" class="path-ihm3ohp3w"></path></svg>
+                </div>
             </div>
             <div class="footer_main">
                 <div class="footer_main_card desktop">
@@ -715,7 +718,6 @@
                     </p>
                     <div class="spacing"></div>
                     <h3>Мы в соц.сетях:</h3>
-
                     <div class="card_icons">
                         <div class="icons_block">
                             <a href="https://www.facebook.com/people/ФинЮст-Консалт/100090806974009/?mibextid=LQQJ4d"
@@ -787,7 +789,7 @@
                             </span> -->
                             <img src="./assets2/images/logo/whatsapp.svg" width="38" height="38" alt="">
                         </a>
-                        <a href="https://t.me/+996554430000" class="soc_set" title="telegram">
+                        <a href="https://t.me/finjustkg" class="soc_set" title="telegram">
                             <!-- <span class="telegram_contained">
                                 <i class="icofont-telegram telegram_styled"></i>
                             </span> -->
@@ -807,6 +809,7 @@
             </div>
         </div>
     </div>
+
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -1026,6 +1029,7 @@
     <!-- <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/jquery.maskedinput@1.4.1/src/jquery.maskedinput.min.js"
         type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
@@ -1037,8 +1041,20 @@
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="./wow.js"></script>
+    <script>
+        wow = new WOW(
+            {
+                boxClass: 'wow',      // default
+                animateClass: 'animated', // default
+                offset: 0,          // default
+                mobile: true,       // default
+                live: true        // default
+            }
+        )
+        wow.init();
+    </script>
     <script src="./chatbot.js" type="text/javascript"></script>
-
 
 </body>
 
