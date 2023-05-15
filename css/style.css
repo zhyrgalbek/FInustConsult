@@ -8737,7 +8737,7 @@ button.header_btn:hover {
 .logo {
   /* border: 1px solid red; */
   /* width: 190px; */
-  height: 100px;
+  height: 75px;
   overflow: hidden;
   margin-top: 5px;
   /* background-color: #fff; */
@@ -10823,7 +10823,7 @@ button.slick-arrow {
   padding-left: 0;
 }
 
-.card-title{
+.card-title{87px
   font-size: 1.4rem !important;
   font-weight: 600;
   margin-bottom: 20px;
