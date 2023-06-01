@@ -19,6 +19,14 @@ const chatbotText = [
         },
         {
             text: 'Выберите пункты'
+        },
+        {
+            text: 'Кому хотите задать вопрос?'
+        },{
+            text: 'Другой вопрос'
+        },
+        {
+            text: 'Если вы хотели задать другой вопрос свяжитесь с нами по номеру: +996 554 430 000 '
         }
     ],
     [
@@ -54,6 +62,7 @@ let chatbot_questions = document.querySelector('#chatbot_questions');
 
 let questions;
 let category;
+let headerQuestions;
 
 for (let i = 0; i < chatbot_questions.children.length; i++) {
     if (chatbot_questions.children[i].dataset.name == 'questions') {
@@ -61,6 +70,9 @@ for (let i = 0; i < chatbot_questions.children.length; i++) {
     }
     if (chatbot_questions.children[i].dataset.name == 'category') {
         category = chatbot_questions.children[i];
+    }
+    if(chatbot_questions.children[i].dataset.name === 'headerQuestions'){
+        headerQuestions = chatbot_questions.children[i];
     }
 }
 let m = [];
@@ -71,8 +83,11 @@ for (let i = 0; i < questions.children.length; i++) {
     }
     m[i] = obj;
 }
+
 let data = [[...m]];
 let cat = [];
+let headerquestionsArr = [];
+
 
 for (let i = 0; i < category.children.length; i++) {
     cat[i] = {
@@ -80,7 +95,28 @@ for (let i = 0; i < category.children.length; i++) {
         vopros: category.children[i].innerText
     }
 }
+
+for(let i=0;i<headerQuestions.children.length;i++){
+    headerquestionsArr[i] = {
+        id: headerQuestions.children[i].dataset.id,
+        vopros: headerQuestions.children[i].innerText
+    }
+}
+
 cat = [[...cat]]
+
+chatbotText[0][0].text = headerquestionsArr.find(el=>+el.id === 5).vopros;
+chatbotText[0][3].text = headerquestionsArr.find(el=>+el.id === 4).vopros;
+chatbotText[0][5].text = headerquestionsArr.find(el=>+el.id === 6).vopros;
+chatbotText[0][6].text = headerquestionsArr.find(el=>+el.id === 1).vopros;
+chatbotText[0][7].text = headerquestionsArr.find(el=>+el.id === 2).vopros;
+chatbotText[0][8].text = headerquestionsArr.find(el=>+el.id === 3).vopros;
+
+
+
+
+
+
 
 
 const ChatBotButton = () => {
@@ -115,24 +151,27 @@ const ChatBotButton = () => {
 
 
 
-const ChatList = ({ data, onClick }) => {
+const ChatList = ({ data, onClick, index, onClickAnotherQuestion }) => {
     return <React.Fragment>
-        {chatbotText[0][5].text}
+        {chatbotText[0][index].text}
         <ul className="chatListBlock">
             {
                 data[0].map(elem => {
                     return <li className="chatListItem" onClick={() => { onClick(elem) }}>{elem.vopros}</li>
                 })
             }
+            {
+                +index === 5 && <li className="chatListItem" onClick={()=>onClickAnotherQuestion({text: chatbotText[0][7].text})}>{chatbotText[0][7].text}</li>
+            }
         </ul>
     </React.Fragment>
 }
 
-const WatsappComponent = () => {
+const WatsappComponent = ({text}) => {
     return <React.Fragment>
-        {chatbotText[0][3].text}
+        {text}
         <br />
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', paddingTop: '8px' }}>
             <a href="tel:+996554430000" title="+996 554 430 000" >
                 <div class="telephone chatbotTelephone" >
                     <svg width="20" height="20" viewBox="0 0 88 92" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -260,23 +299,52 @@ const ChatBot = ({ handleClose }) => {
                     arr = [...arr, { id: Date.now(), text: <div className="loader"></div>, variant: 'loader' }];
                     return arr;
                 })
-            }, 1000)
+            }, 1500)
             setTimeout(() => {
                 setMessages((prev) => {
                     let arr = prev.filter(elem => elem.variant !== 'loader');
                     let date = new Date();
-                    arr = [...arr, { id: Date.now(), text: <WatsappComponent />, variant: 'vopros', time: `${date.getHours()}:${date.getMinutes()}` }]
+                    arr = [...arr, { id: Date.now(), text: <WatsappComponent text={chatbotText[0][3].text} />, variant: 'admin', time: `${date.getHours()}:${date.getMinutes()}` }]
                     return arr;
                 });
-            }, 2000)
+            }, 3000)
             setMessages((prev) => {
                 let arr = prev.filter(elem => elem.variant !== 'loader');
                 let date = new Date();
                 arr = [...arr, { id: Date.now(), text: elem.text, variant: 'admin', time: `${date.getHours()}:${date.getMinutes()}` }]
                 return arr;
             })
+            
         }, 2000)
+      
     }
+
+    const onClickAnotherQuestion = (elem)=>{
+            setTimeout(() => {
+                setMessages((prev) => {
+                    let arr = prev.filter(elem => elem.variant !== 'vopros');
+                    arr = [...arr, { id: Date.now(), text: <div className="loader"></div>, variant: 'loader' }];
+                    return arr;
+                })
+            }, 1000)
+            setTimeout(() => {
+                setMessages((prev) => {
+                    let arr = prev.filter(elem => elem.variant !== 'loader');
+                    let date = new Date();
+                    arr = [...arr, { id: Date.now(), text: <WatsappComponent text={chatbotText[0][8].text} />, variant: 'admin', time: `${date.getHours()}:${date.getMinutes()}` }]
+                    return arr;
+                });
+            }, 2000)
+            setMessages((prev) => {
+                let arr = prev.filter(elem => elem.variant !== 'loader');
+                let date = new Date();
+                arr = [...arr, { id: Date.now(), text: elem.text, variant: 'client', time: `${date.getHours()}:${date.getMinutes()}` }]
+                return arr;
+            })
+            
+       
+    }
+
     const onClicktwoItem = (elem) => {
         setMessages((prev) => {
             let arr = prev.filter(elem => elem.variant !== 'vopros');
@@ -296,7 +364,7 @@ const ChatBot = ({ handleClose }) => {
                 let arr = prev.filter(elem => elem.variant !== 'loader');
                 let date = new Date();
                 let newData = getQuestions(data, elem);
-                arr = [...arr, { id: Date.now(), text: <ChatList data={newData} onClick={onClickItem} />, variant: 'admin', time: `${date.getHours()}:${date.getMinutes()}` }]
+                arr = [...arr, { id: Date.now(), text: <ChatList data={newData} onClick={onClickItem} index={5} onClickAnotherQuestion={onClickAnotherQuestion} />, variant: 'admin', time: `${date.getHours()}:${date.getMinutes()}` }]
                 return arr;
             })
         }, 2000)
@@ -341,7 +409,7 @@ const ChatBot = ({ handleClose }) => {
                     if (otvet) {
                         return [...arr, { id: Date.now(), text: otvet, variant: 'admin', time: `${date.getHours()}:${date.getMinutes()}` }]
                     }
-                    arr = [...arr, { id: Date.now(), text: <ChatList data={cat} onClick={onClicktwoItem} />, variant: 'admin', time: `${date.getHours()}:${date.getMinutes()}` }]
+                    arr = [...arr, { id: Date.now(), text: <ChatList data={cat} onClick={onClicktwoItem} index={6} />, variant: 'admin', time: `${date.getHours()}:${date.getMinutes()}` }]
                     return arr;
                 });
             }, 1000);
@@ -419,8 +487,8 @@ const ChatBot = ({ handleClose }) => {
                 }
             </div>
             <form className="chatbotForm" onSubmit={handleSubmit}>
-                <input type="text" value={input} onChange={handleChange} placeholder="Введите текст" autoFocus />
-                <button type="submit">отправить</button>
+                <input type="text" value={input} onChange={handleChange} placeholder={headerquestionsArr.find(el=>+el.id === 7).vopros} autoFocus />
+                <button type="submit">{headerquestionsArr.find(el=>+el.id === 8).vopros}</button>
             </form>
         </div >
     );

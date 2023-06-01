@@ -16,6 +16,12 @@ var chatbotText = [[{
     text: 'Введите ваше сообщение'
 }, {
     text: 'Выберите пункты'
+}, {
+    text: 'Кому хотите задать вопрос?'
+}, {
+    text: 'Другой вопрос'
+}, {
+    text: 'Если вы хотели задать другой вопрос свяжитесь с нами по номеру: +996 554 430 000 '
 }], [{
     text: 'Саламатсызбы, сизге кантип жардам берсем болот?'
 }, {
@@ -41,6 +47,7 @@ var chatbot_questions = document.querySelector('#chatbot_questions');
 
 var questions = void 0;
 var category = void 0;
+var headerQuestions = void 0;
 
 for (var i = 0; i < chatbot_questions.children.length; i++) {
     if (chatbot_questions.children[i].dataset.name == 'questions') {
@@ -48,6 +55,9 @@ for (var i = 0; i < chatbot_questions.children.length; i++) {
     }
     if (chatbot_questions.children[i].dataset.name == 'category') {
         category = chatbot_questions.children[i];
+    }
+    if (chatbot_questions.children[i].dataset.name === 'headerQuestions') {
+        headerQuestions = chatbot_questions.children[i];
     }
 }
 var m = [];
@@ -58,8 +68,10 @@ for (var _i = 0; _i < questions.children.length; _i++) {
     }
     m[_i] = obj;
 }
+
 var data = [[].concat(m)];
 var cat = [];
+var headerquestionsArr = [];
 
 for (var _i2 = 0; _i2 < category.children.length; _i2++) {
     cat[_i2] = {
@@ -67,7 +79,34 @@ for (var _i2 = 0; _i2 < category.children.length; _i2++) {
         vopros: category.children[_i2].innerText
     };
 }
+
+for (var _i3 = 0; _i3 < headerQuestions.children.length; _i3++) {
+    headerquestionsArr[_i3] = {
+        id: headerQuestions.children[_i3].dataset.id,
+        vopros: headerQuestions.children[_i3].innerText
+    };
+}
+
 cat = [[].concat(_toConsumableArray(cat))];
+
+chatbotText[0][0].text = headerquestionsArr.find(function (el) {
+    return +el.id === 5;
+}).vopros;
+chatbotText[0][3].text = headerquestionsArr.find(function (el) {
+    return +el.id === 4;
+}).vopros;
+chatbotText[0][5].text = headerquestionsArr.find(function (el) {
+    return +el.id === 6;
+}).vopros;
+chatbotText[0][6].text = headerquestionsArr.find(function (el) {
+    return +el.id === 1;
+}).vopros;
+chatbotText[0][7].text = headerquestionsArr.find(function (el) {
+    return +el.id === 2;
+}).vopros;
+chatbotText[0][8].text = headerquestionsArr.find(function (el) {
+    return +el.id === 3;
+}).vopros;
 
 var ChatBotButton = function ChatBotButton() {
     var _React$useState = React.useState(false),
@@ -113,12 +152,14 @@ var ChatBotButton = function ChatBotButton() {
 
 var ChatList = function ChatList(_ref) {
     var data = _ref.data,
-        _onClick = _ref.onClick;
+        _onClick = _ref.onClick,
+        index = _ref.index,
+        onClickAnotherQuestion = _ref.onClickAnotherQuestion;
 
     return React.createElement(
         React.Fragment,
         null,
-        chatbotText[0][5].text,
+        chatbotText[0][index].text,
         React.createElement(
             'ul',
             { className: 'chatListBlock' },
@@ -130,20 +171,29 @@ var ChatList = function ChatList(_ref) {
                         } },
                     elem.vopros
                 );
-            })
+            }),
+            +index === 5 && React.createElement(
+                'li',
+                { className: 'chatListItem', onClick: function onClick() {
+                        return onClickAnotherQuestion({ text: chatbotText[0][7].text });
+                    } },
+                chatbotText[0][7].text
+            )
         )
     );
 };
 
-var WatsappComponent = function WatsappComponent() {
+var WatsappComponent = function WatsappComponent(_ref2) {
+    var text = _ref2.text;
+
     return React.createElement(
         React.Fragment,
         null,
-        chatbotText[0][3].text,
+        text,
         React.createElement('br', null),
         React.createElement(
             'div',
-            { style: { display: 'flex', alignItems: 'center' } },
+            { style: { display: 'flex', alignItems: 'center', paddingTop: '8px' } },
             React.createElement(
                 'a',
                 { href: 'tel:+996554430000', title: '+996 554 430 000' },
@@ -174,13 +224,13 @@ var WatsappComponent = function WatsappComponent() {
 var words = [['првет', 'привет', 'ghbdtn', 'здравствуй', 'Привет', 'Ghbdtn'], ['Привет', 'Здравствуйте', 'Добрый день', 'Рад тебя видеть!'], ['Пока', 'До свидания', 'пока'], ['Пока', 'До свидания', 'Приходи еше', 'Я буду скучать!']];
 
 function answering(words, elem) {
-    for (var _i3 = 0; _i3 < words[0].length; _i3++) {
-        if (elem.text.trim() == words[0][_i3] && elem.variant === 'client') {
+    for (var _i4 = 0; _i4 < words[0].length; _i4++) {
+        if (elem.text.trim() == words[0][_i4] && elem.variant === 'client') {
             var s = Math.floor(Math.random() * words[1].length);
             console.log(s);
             return words[1][s];
         }
-        if (elem.text.trim() == words[2][_i3] && elem.variant === 'client') {
+        if (elem.text.trim() == words[2][_i4] && elem.variant === 'client') {
             var _s = Math.floor(Math.random() * words[3].length);
             console.log(_s);
             return words[3][_s];
@@ -222,8 +272,8 @@ function getQuestions(arr, elem) {
     return [[].concat(_toConsumableArray(p))];
 }
 
-var ChatBot = function ChatBot(_ref2) {
-    var handleClose = _ref2.handleClose;
+var ChatBot = function ChatBot(_ref3) {
+    var handleClose = _ref3.handleClose;
 
     var _React$useState5 = React.useState(''),
         _React$useState6 = _slicedToArray(_React$useState5, 2),
@@ -274,17 +324,17 @@ var ChatBot = function ChatBot(_ref2) {
                     arr = [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: React.createElement('div', { className: 'loader' }), variant: 'loader' }]);
                     return arr;
                 });
-            }, 1000);
+            }, 1500);
             setTimeout(function () {
                 setMessages(function (prev) {
                     var arr = prev.filter(function (elem) {
                         return elem.variant !== 'loader';
                     });
                     var date = new Date();
-                    arr = [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: React.createElement(WatsappComponent, null), variant: 'vopros', time: date.getHours() + ':' + date.getMinutes() }]);
+                    arr = [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: React.createElement(WatsappComponent, { text: chatbotText[0][3].text }), variant: 'admin', time: date.getHours() + ':' + date.getMinutes() }]);
                     return arr;
                 });
-            }, 2000);
+            }, 3000);
             setMessages(function (prev) {
                 var arr = prev.filter(function (elem) {
                     return elem.variant !== 'loader';
@@ -295,6 +345,37 @@ var ChatBot = function ChatBot(_ref2) {
             });
         }, 2000);
     };
+
+    var onClickAnotherQuestion = function onClickAnotherQuestion(elem) {
+        setTimeout(function () {
+            setMessages(function (prev) {
+                var arr = prev.filter(function (elem) {
+                    return elem.variant !== 'vopros';
+                });
+                arr = [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: React.createElement('div', { className: 'loader' }), variant: 'loader' }]);
+                return arr;
+            });
+        }, 1000);
+        setTimeout(function () {
+            setMessages(function (prev) {
+                var arr = prev.filter(function (elem) {
+                    return elem.variant !== 'loader';
+                });
+                var date = new Date();
+                arr = [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: React.createElement(WatsappComponent, { text: chatbotText[0][8].text }), variant: 'admin', time: date.getHours() + ':' + date.getMinutes() }]);
+                return arr;
+            });
+        }, 2000);
+        setMessages(function (prev) {
+            var arr = prev.filter(function (elem) {
+                return elem.variant !== 'loader';
+            });
+            var date = new Date();
+            arr = [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: elem.text, variant: 'client', time: date.getHours() + ':' + date.getMinutes() }]);
+            return arr;
+        });
+    };
+
     var onClicktwoItem = function onClicktwoItem(elem) {
         setMessages(function (prev) {
             var arr = prev.filter(function (elem) {
@@ -320,7 +401,7 @@ var ChatBot = function ChatBot(_ref2) {
                 });
                 var date = new Date();
                 var newData = getQuestions(data, elem);
-                arr = [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: React.createElement(ChatList, { data: newData, onClick: onClickItem }), variant: 'admin', time: date.getHours() + ':' + date.getMinutes() }]);
+                arr = [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: React.createElement(ChatList, { data: newData, onClick: onClickItem, index: 5, onClickAnotherQuestion: onClickAnotherQuestion }), variant: 'admin', time: date.getHours() + ':' + date.getMinutes() }]);
                 return arr;
             });
         }, 2000);
@@ -373,7 +454,7 @@ var ChatBot = function ChatBot(_ref2) {
                     if (otvet) {
                         return [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: otvet, variant: 'admin', time: date.getHours() + ':' + date.getMinutes() }]);
                     }
-                    arr = [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: React.createElement(ChatList, { data: cat, onClick: onClicktwoItem }), variant: 'admin', time: date.getHours() + ':' + date.getMinutes() }]);
+                    arr = [].concat(_toConsumableArray(arr), [{ id: Date.now(), text: React.createElement(ChatList, { data: cat, onClick: onClicktwoItem, index: 6 }), variant: 'admin', time: date.getHours() + ':' + date.getMinutes() }]);
                     return arr;
                 });
             }, 1000);
@@ -484,11 +565,15 @@ var ChatBot = function ChatBot(_ref2) {
         React.createElement(
             'form',
             { className: 'chatbotForm', onSubmit: handleSubmit },
-            React.createElement('input', { type: 'text', value: input, onChange: handleChange, placeholder: '\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0442\u0435\u043A\u0441\u0442', autoFocus: true }),
+            React.createElement('input', { type: 'text', value: input, onChange: handleChange, placeholder: headerquestionsArr.find(function (el) {
+                    return +el.id === 7;
+                }).vopros, autoFocus: true }),
             React.createElement(
                 'button',
                 { type: 'submit' },
-                '\u043E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C'
+                headerquestionsArr.find(function (el) {
+                    return +el.id === 8;
+                }).vopros
             )
         )
     );
